@@ -80,14 +80,13 @@ public abstract class Dao<E, K>
 
         return (K) id;
     }
-    
-    
+
     /**
-     * Localização de um objeto por Id no banco de dados, para se retornado
-     * para a memória
+     * Localização de um objeto por Id no banco de dados, para se retornado para
+     * a memória
+     *
      * @param id id do objeto a ser buscado
-     * @return se encontrado, objeto será retornado, caso contrário
-     * retorna null
+     * @return se encontrado, objeto será retornado, caso contrário retorna null
      */
     public E localizarPorId(K id) {
         try ( PreparedStatement preparedStatement
@@ -96,48 +95,34 @@ public abstract class Dao<E, K>
                         .prepareStatement(
                                 obterSentencaLocalizarPorId())) {
                     preparedStatement.setLong(1, (Long) id);
-                    
+
                     ResultSet rs = preparedStatement.executeQuery();
                     System.out.println("SQL: " + preparedStatement);
-                    if(rs.next()){
+                    if (rs.next()) {
                         return extrairObjeto(rs);
                     }
                 } catch (Exception ex) {
                     System.out.println(">> " + ex);
                 }
-        return null;
+                return null;
     }
-    
-        public List<E> localizarTodos(){
-            try ( PreparedStatement preparedStatement
+
+    public List<E> localizarTodos() {
+        try ( PreparedStatement preparedStatement
                 = ConexaoBd
                         .getConexao()
                         .prepareStatement(
                                 obterSentencaLocalizarTodos())) {
                     ResultSet rs = preparedStatement.executeQuery();
                     System.out.println("SQL: " + preparedStatement);
-                    if(rs.next()){
+                    if (rs.next()) {
                         return extrairObjetos(rs);
                     }
                 } catch (Exception ex) {
                     System.out.println(">> " + ex);
                 }
-            return null;
-        }
-        
-        public void moverParaLixeira(K id){
-            try ( PreparedStatement preparedStatement
-                = ConexaoBd
-                        .getConexao()
-                        .prepareStatement(
-                                obterSentencaMoverParaLixeira())) {
-                    preparedStatement.setLong(1, (Long) id);
-                    preparedStatement.executeUpdate();
-                    System.out.println("SQL: " + preparedStatement);
-                } catch (Exception ex) {
-                    System.out.println(">> " + ex);
-                }
-        }
+                return null;
+    }
 
     /**
      * Sentença SQL específica para cada tipo de objeto a ser persistido no
@@ -158,13 +143,11 @@ public abstract class Dao<E, K>
     public abstract void montarDeclaracao(PreparedStatement pstmt, E e);
 
     public abstract String obterSentencaLocalizarPorId();
-    
+
     public abstract E extrairObjeto(ResultSet resultSet);
-    
+
     public abstract String obterSentencaLocalizarTodos();
-    
+
     public abstract List<E> extrairObjetos(ResultSet rs);
-    
-    public abstract String obterSentencaMoverParaLixeira();
 
 }

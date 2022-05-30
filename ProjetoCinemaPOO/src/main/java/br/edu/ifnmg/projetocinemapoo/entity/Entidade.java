@@ -21,32 +21,23 @@ public abstract class Entidade {
 
     // Representação da chave primária padrão para a entidade.
     private Long id;
-    private Long excluido;
 
     //<editor-fold defaultstate="collapsed" desc="GS">
     public Entidade() {
     }
 
-    public Entidade(Long id, Long excluido) {
+    public Entidade(Long id) {
         this.id = id;
-        this.excluido = excluido;
     }
 //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="C">
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getExcluido() {
-        return excluido;
-    }
-
-    public void setExcluido(Long excluido) {
-        this.excluido = excluido;
     }
     //</editor-fold>
 }

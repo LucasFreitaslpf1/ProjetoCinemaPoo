@@ -8,7 +8,7 @@ package br.edu.ifnmg.projetocinemapoo.entity;
  *
  * @author Lucas
  */
-public class Funcionario {
+public class Funcionario extends Entidade{
 
     private String nome;
 

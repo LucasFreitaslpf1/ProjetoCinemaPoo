@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.projetocinemapoo.dao;
 
-import br.edu.ifnmg.projetocinemapoo.entity.Guiche;
+import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,25 +17,25 @@ import java.util.logging.Logger;
  *
  * @author Lucas
  */
-public class GuicheDao extends Dao<Guiche, Long> {
+public class FuncionarioDao extends Dao<Funcionario, Long> {
 
     @Override
     public String obterSentencaInsert() {
-        return "insert into guiche (numero) values (?);";
+        return "insert into funcionario (nome) values (?);";
     }
 
     @Override
     public String obterSentencaUpdate() {
-        return "update guiche set numero = ? where id = ?;";
+        return "update funcionario set nome = ? where id = ?;";
     }
 
     @Override
-    public void montarDeclaracao(PreparedStatement pstmt, Guiche e) {
+    public void montarDeclaracao(PreparedStatement pstmt, Funcionario e) {
         try {
             if (e.getId() == null || e.getId() == 0) {
-                pstmt.setInt(1, e.getNumero());
+                pstmt.setString(1, e.getNome());
             } else {
-                pstmt.setInt(1, e.getNumero());
+                pstmt.setString(1, e.getNome());
                 pstmt.setLong(2, e.getId());
             }
         } catch (Exception ex) {
@@ -45,38 +45,39 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaLocalizarPorId() {
-        return "select id,numero from guiche where id=?;";
+        return "select id,nome from funcionario where id=?;";
     }
 
     @Override
-    public Guiche extrairObjeto(ResultSet resultSet) {
-        Guiche g = new Guiche();
+    public Funcionario extrairObjeto(ResultSet resultSet) {
+        Funcionario f = new Funcionario();
         try {
-            g.setId(resultSet.getLong("id"));
-            g.setNumero(resultSet.getInt("numero"));
+            f.setId(resultSet.getLong("id"));
+            f.setNome(resultSet.getString("nome"));
         } catch (SQLException ex) {
-            Logger.getLogger(GuicheDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Ex = " + ex);
         }
-        return g;
+        return f;
     }
 
     @Override
     public String obterSentencaLocalizarTodos() {
-        return "select id,numero from guiche;";
+        return "select id,nome from funcionario;";
     }
 
     @Override
-    public List<Guiche> extrairObjetos(ResultSet rs) {
-        ArrayList<Guiche> guiches = new ArrayList<>();
+    public List<Funcionario> extrairObjetos(ResultSet rs) {
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
         try {
             do {
-                guiches.add(extrairObjeto(rs));
+                funcionarios.add(extrairObjeto(rs));
             } while (rs.next());
         } catch (SQLException ex) {
-            Logger.getLogger(GuicheDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return guiches;
+        return funcionarios;
     }
+
 }
