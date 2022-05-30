@@ -43,7 +43,7 @@ public class ConexaoBd {
     // Inicialização de atributos estáticos.
     static {
         // Servidor Local
-        URL = "jdbc:mysql://127.0.0.1:3306/dbteste"
+        URL = "jdbc:mysql://127.0.0.1:3306/projetocinema"
                 + "?useUnicode=true"
                 + "&useJDBCCompliantTimezoneShift=true"
                 + "&serverTimezone=UTC"
