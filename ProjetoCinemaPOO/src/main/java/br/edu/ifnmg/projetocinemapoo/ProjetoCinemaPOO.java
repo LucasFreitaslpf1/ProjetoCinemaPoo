@@ -42,15 +42,17 @@ public class ProjetoCinemaPOO {
 
          
          //TESTE
-        /*Sala sala = new Sala();
+        /* 
+        Sala sala = new Sala();
         sala.setNumero(01);
-        sala.setCapacidade(250);
-        sala.setTela(Tela._2D);
+        sala.setCapacidade(300);
+        sala.setTela(Tela._3D);
 
-        SalaDao salaDao1 = new SalaDao();
-        Long id = salaDao1.salvar(sala);
+        SalaDao salaDao = new SalaDao();
+        Long id = salaDao.salvar(sala);
         sala.setId(id);*/
-         
+        
+          
         
     
       

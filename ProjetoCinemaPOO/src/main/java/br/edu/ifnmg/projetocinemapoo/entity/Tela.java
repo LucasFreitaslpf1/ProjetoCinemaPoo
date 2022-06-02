@@ -2,6 +2,7 @@ package br.edu.ifnmg.projetocinemapoo.entity;
 
 public enum Tela {
 
+    //_2D, _3D;
     _2D {
 
         @Override
