@@ -1,6 +1,6 @@
 package br.edu.ifnmg.projetocinemapoo.entity;
 
-public class Ingresso {
+public class Ingresso extends Entidade {
 
     private Boolean meiaEntada;
     private Float preco;

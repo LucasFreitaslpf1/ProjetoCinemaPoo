@@ -1,33 +1,33 @@
 package br.edu.ifnmg.projetocinemapoo.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Venda {
-    
+public class Venda extends Entidade {
+
     private Long codigoVenda;
     private Integer quantidade;
     private Guiche guiche;
     private Sessao sessao;
     private List<Ingresso> ingressos;
     private Double valorTotal;
-    
+
     //<editor-fold defaultstate="collapsed" desc="Construtores">
-    
     public Venda() {
-        
-        
+
+        ingressos = new ArrayList();
     }
 
-    public Venda(Long codigoVenda, Integer quantidade, Guiche guiche, Sessao sessao, List<Ingresso> ingressos, Double valorTotal) {
+    public Venda(Long codigoVenda, Integer quantidade, Guiche guiche, Sessao sessao, Double valorTotal) {
+        this();
         this.codigoVenda = codigoVenda;
         this.quantidade = quantidade;
         this.guiche = guiche;
         this.sessao = sessao;
-        this.ingressos = ingressos;
         this.valorTotal = valorTotal;
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getCodigoVenda() {
         return codigoVenda;
@@ -77,16 +77,22 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
     //</editor-fold>
-    
+
+    public void adicionarIngresso(Ingresso ingresso) {
+        ingressos.add(ingresso);
+    }
+
+    public void removerIngresso(Ingresso ingresso)
+            throws RuntimeException {
+        if (!ingressos.contains(ingresso)) {
+            throw new RuntimeException("Tentativa de remoção de ingresso inexistente");
+        }
+        ingressos.remove(ingresso);
+    }
+
     @Override
     public String toString() {
         return "Venda{" + "codigoVenda=" + codigoVenda + ", quantidade=" + quantidade + ", guiche=" + guiche + ", sessao=" + sessao + ", ingressos=" + ingressos + ", valorTotal=" + valorTotal + '}';
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

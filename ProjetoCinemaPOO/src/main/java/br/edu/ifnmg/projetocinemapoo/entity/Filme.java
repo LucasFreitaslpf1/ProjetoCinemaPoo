@@ -51,4 +51,11 @@ public class Filme extends Entidade{
         this.generoPrincipal = generoPrincipal;
     }
     //</editor-fold>
+
+    @Override
+    public String toString() {
+        return "Filme{" + "nome=" + nome + ", dura\u00e7\u00e3o=" + duração + ", classificacao=" + classificacao + ", generoPrincipal=" + generoPrincipal + '}';
+    }
+    
+    
 }
