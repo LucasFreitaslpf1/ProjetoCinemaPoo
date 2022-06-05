@@ -64,7 +64,7 @@ public class IngressoDao extends Dao<Ingresso, Long> {
 
     @Override
     public List<Ingresso> extrairObjetos(ResultSet rs) {
-        
+
         ArrayList<Ingresso> ingressos = new ArrayList<>();
 
         try {
