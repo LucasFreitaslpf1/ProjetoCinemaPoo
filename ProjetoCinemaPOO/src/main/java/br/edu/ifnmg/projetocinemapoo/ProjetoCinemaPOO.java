@@ -7,6 +7,9 @@ package br.edu.ifnmg.projetocinemapoo;
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
 import br.edu.ifnmg.projetocinemapoo.dao.IngressoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
+import br.edu.ifnmg.projetocinemapoo.dao.SessaoDao;
+import br.edu.ifnmg.projetocinemapoo.dao.VendaDao;
+import br.edu.ifnmg.projetocinemapoo.entity.Audio;
 import br.edu.ifnmg.projetocinemapoo.entity.Classificacao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
 import br.edu.ifnmg.projetocinemapoo.entity.Sala;
@@ -16,6 +19,9 @@ import br.edu.ifnmg.projetocinemapoo.entity.Filme;
 import br.edu.ifnmg.projetocinemapoo.entity.Sessao;
 import br.edu.ifnmg.projetocinemapoo.entity.Ingresso;
 import br.edu.ifnmg.projetocinemapoo.entity.Venda;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,5 +77,20 @@ public class ProjetoCinemaPOO {
         System.out.println("Ingresso : " + iDao.localizarPorId(i.getId()));
 
         System.out.println("Ingressos: " + iDao.localizarTodos());*/
+        
+         
+        
+        /*Venda v = new Venda();
+        v.setCodigoVenda((long)111555);
+        v.setQuantidade((short)5);
+        v.setValorTotal(123d);
+        
+        VendaDao vDao = new VendaDao();
+        Long id = vDao.salvar(v);
+        v.setId(id);
+        System.out.println("Venda : " + vDao.localizarPorId(v.getId()));
+        System.out.println("Vendas: " + vDao.localizarTodos());*/
+        
+        
     }
 }
