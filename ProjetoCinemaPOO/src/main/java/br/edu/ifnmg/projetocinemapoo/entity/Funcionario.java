@@ -20,6 +20,7 @@ public class Funcionario extends Entidade{
         this.nome = nome;
     }
 //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public String getNome() {
         return nome;
