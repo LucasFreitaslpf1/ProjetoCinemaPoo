@@ -5,6 +5,7 @@
 package br.edu.ifnmg.projetocinemapoo;
 
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
+import br.edu.ifnmg.projetocinemapoo.dao.IngressoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Classificacao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
@@ -46,14 +47,29 @@ public class ProjetoCinemaPOO {
 //        g = new FuncionarioDao().localizarTodos();
 //        System.out.println(g);
         //TESTE
-        /* 
-        Sala sala = new Sala();
+         
+       /* Sala sala = new Sala();
         sala.setNumero(01);
         sala.setCapacidade(300);
         sala.setTela(Tela._3D);
 
         SalaDao salaDao = new SalaDao();
         Long id = salaDao.salvar(sala);
-        sala.setId(id);*/
+        sala.setId(id);
+        System.out.println("Salas: " + salaDao.localizarTodos());*/
+        
+        
+        
+        /*Ingresso i = new Ingresso();
+        i.setMeiaEntada(Boolean.TRUE);
+        i.setPreco(15f);
+
+        IngressoDao iDao = new IngressoDao();
+        Long id = iDao.salvar(i);
+        i.setId(id);
+
+        System.out.println("Ingresso : " + iDao.localizarPorId(i.getId()));
+
+        System.out.println("Ingressos: " + iDao.localizarTodos());*/
     }
 }
