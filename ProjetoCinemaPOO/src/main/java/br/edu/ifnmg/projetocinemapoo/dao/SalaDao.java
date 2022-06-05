@@ -29,8 +29,8 @@ public class SalaDao extends Dao<Sala, Long> {
 
             pstmt.setInt(1, e.getNumero());
             pstmt.setInt(2, e.getCapacidade());
-            pstmt.setObject(3, e.getTela(), java.sql.Types.VARCHAR);
-           //pstmt.setString(3, e.getTela());
+            //pstmt.setObject(3, e.getTela(), java.sql.Types.VARCHAR);
+            pstmt.setString(3, e.getTela());
             if (e.getId() != null && e.getId() != 0) {
                 pstmt.setLong(4, e.getId());
             }
@@ -48,14 +48,14 @@ public class SalaDao extends Dao<Sala, Long> {
     @Override
     public Sala extrairObjeto(ResultSet resultSet) {
         Sala sala = new Sala();
-        
+
         try {
 
             sala.setId(resultSet.getLong("id"));
             sala.setNumero(resultSet.getInt("numero"));
             sala.setCapacidade(resultSet.getInt("capacidade"));
-            sala.setTela((Tela) resultSet.getObject("tela"));
-           
+            sala.setTela(resultSet.getObject("tela", Tela.class));
+
         } catch (SQLException ex) {
             Logger.getLogger(SalaDao.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Ex = " + ex);
