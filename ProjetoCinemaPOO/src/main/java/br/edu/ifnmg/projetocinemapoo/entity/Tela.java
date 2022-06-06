@@ -7,14 +7,14 @@ public enum Tela {
 
         @Override
         public String getDescription() {
-            return "2D";
+            return "_2D";
         }
     },
     _3D {
 
         @Override
         public String getDescription() {
-            return "3D";
+            return "_3D";
         }
     };
 
