@@ -138,5 +138,6 @@ public class ProjetoCinemaPOO {
         //new GeneroDao().salvar(genero1);
 
         
+        
     }
 }
