@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.constant.Constable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,7 +53,7 @@ public class SalaDao extends Dao<Sala, Long> {
             sala.setId(resultSet.getLong("id"));
             sala.setNumero(resultSet.getInt("numero"));
             sala.setCapacidade(resultSet.getInt("capacidade"));
-            sala.setTela(resultSet.getObject("tela", Tela.class));
+            sala.setTela(Tela.valueOf(resultSet.getString("tela")));
 
         } catch (SQLException ex) {
             Logger.getLogger(SalaDao.class.getName()).log(Level.SEVERE, null, ex);
