@@ -51,3 +51,12 @@ id serial,
 numero tinyint not null,
 primary key(id)
 );
+
+create table sessao(
+id serial,
+horario datetime not null,
+audio enum('LEGENDADO','DUBLADO'),
+ingressosvendidos int,
+valorsessao float,
+primary key(id)
+) engine=innodb;
