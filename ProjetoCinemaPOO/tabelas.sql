@@ -2,19 +2,13 @@ create database projetocinema;
 
 use projetocinema;
 
-drop table sala;
-select *from sala;
-
 create table sala(
   id int(11) not null auto_increment,
   numero tinyint(2) not null,
   capacidade smallint(3) not null,
-  tela ENUM('3D','2D'),
+  tela ENUM('_3D','_2D'),
   primary key(id)
 )engine=InnoDB;
-
-drop table ingresso;
-select *from ingresso;
 
 create table ingresso(
   id int(11) not null auto_increment,
@@ -22,9 +16,6 @@ create table ingresso(
   preco float(5,2),
   primary key(id)
 )engine=InnoDB;
-
-drop table venda;
-select *from venda;
 
 create table venda(
   id int(11) not null auto_increment,
@@ -38,12 +29,11 @@ create table filme(
 id serial,
 nome varchar(100) not null,
 duracao int not null,
-classificacao enum('LIVRE','+10','+12','+14','+16','+18'),
+classificacao enum('LIVRE','_10','_12','_14','_16','_18'),
 generoprincipal varchar(100),
 primary key(id)
 ) engine = innodb;
 
-drop table genero;
 create table genero(
 id serial,
 nome varchar(100) not null,
