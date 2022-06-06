@@ -20,35 +20,35 @@ public enum Classificacao {
 
         @Override
         public String getDescription() {
-            return "+10";
+            return "_10";
         }
     },
     _12{
 
         @Override
         public String getDescription() {
-            return "+12";
+            return "_12";
         }
     },
     _14{
 
         @Override
         public String getDescription() {
-            return "+14";
+            return "_14";
         }
     },
     _16{
 
         @Override
         public String getDescription() {
-            return "+16";
+            return "_16";
         }
     },
     _18{
 
         @Override
         public String getDescription() {
-            return "+18";
+            return "_18";
         }
     };
     
