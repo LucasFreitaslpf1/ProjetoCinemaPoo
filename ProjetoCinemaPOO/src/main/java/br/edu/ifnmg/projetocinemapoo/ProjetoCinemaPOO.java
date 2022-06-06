@@ -6,6 +6,7 @@ package br.edu.ifnmg.projetocinemapoo;
 
 import br.edu.ifnmg.projetocinemapoo.dao.FilmeDao;
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
+import br.edu.ifnmg.projetocinemapoo.dao.GeneroDao;
 import br.edu.ifnmg.projetocinemapoo.dao.IngressoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
 //import br.edu.ifnmg.projetocinemapoo.dao.SessaoDao;
@@ -54,7 +55,7 @@ public class ProjetoCinemaPOO {
 //        g = new FuncionarioDao().localizarTodos();
 //        System.out.println(g);
         //TESTE
-         
+        /*
         Sala sala = new Sala();
         sala.setNumero(01);
         sala.setCapacidade(300);
@@ -65,7 +66,7 @@ public class ProjetoCinemaPOO {
 
         sala.setId(id);
         System.out.println("Salas: " + salaDao.localizarTodos());
-        
+        */
         
         
         /*Ingresso i = new Ingresso();
@@ -95,8 +96,7 @@ public class ProjetoCinemaPOO {
         
         /*
         Filme filme1 = new Filme();
-        filme1.setId(4L);
-        filme1.setNome("Velozes e Furiosos");
+        filme1.setNome("Forest Gump");
         filme1.setDuracao(2);
         filme1.setClassificacao(Classificacao._16);
         
@@ -105,7 +105,6 @@ public class ProjetoCinemaPOO {
         new FilmeDao().salvar(filme1);
         
         Filme filme2 = new Filme();
-        filme2.setId(5l);
         filme2.setNome("Harry Potter");
         filme2.setDuracao(1);
         filme2.setClassificacao(Classificacao._14);
@@ -130,10 +129,14 @@ public class ProjetoCinemaPOO {
             al.toString();
         }
         */
-
-
         
         
+        //Genero genero1 = new Genero();
+        //genero1.setNome("Romance");
+       
+        
+        //new GeneroDao().salvar(genero1);
 
+        
     }
 }
