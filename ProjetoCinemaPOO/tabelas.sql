@@ -33,3 +33,19 @@ create table venda(
   valortotal Double(10,2),
   primary key(id)
 )engine=InnoDB;
+
+create table filme(
+id serial,
+nome varchar(100) not null,
+duracao int not null,
+classificacao enum('LIVRE','+10','+12','+14','+16','+18'),
+generoprincipal varchar(100),
+primary key(id)
+) engine = innodb;
+
+drop table genero;
+create table genero(
+id serial,
+nome varchar(100) not null,
+primary key(id)
+) engine = innodb;
