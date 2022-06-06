@@ -6,7 +6,7 @@ import java.util.List;
 public class Venda extends Entidade {
 
     private Long codigoVenda;
-    private Integer quantidade;
+    private Short quantidade;
     private Guiche guiche;
     private Sessao sessao;
     private List<Ingresso> ingressos;
@@ -18,16 +18,16 @@ public class Venda extends Entidade {
         ingressos = new ArrayList();
     }
 
-    public Venda(Long codigoVenda, Integer quantidade, Guiche guiche, Sessao sessao, Double valorTotal) {
-        this();
+    public Venda(Long codigoVenda, Short quantidade, Guiche guiche, Sessao sessao, List<Ingresso> ingressos, Double valorTotal) {
         this.codigoVenda = codigoVenda;
         this.quantidade = quantidade;
         this.guiche = guiche;
         this.sessao = sessao;
+        this.ingressos = ingressos;
         this.valorTotal = valorTotal;
     }
-    //</editor-fold>
 
+    //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getCodigoVenda() {
         return codigoVenda;
@@ -37,11 +37,11 @@ public class Venda extends Entidade {
         this.codigoVenda = codigoVenda;
     }
 
-    public Integer getQuantidade() {
+    public Short getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(Short quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -92,7 +92,9 @@ public class Venda extends Entidade {
 
     @Override
     public String toString() {
-        return "Venda{" + "codigoVenda=" + codigoVenda + ", quantidade=" + quantidade + ", guiche=" + guiche + ", sessao=" + sessao + ", ingressos=" + ingressos + ", valorTotal=" + valorTotal + '}';
+        return "Venda{" + "codigoVenda=" + codigoVenda + ", quantidade=" + quantidade + ", valorTotal=" + valorTotal + '}';
     }
+
+    
 
 }

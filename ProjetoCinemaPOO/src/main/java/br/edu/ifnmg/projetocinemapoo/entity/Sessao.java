@@ -8,14 +8,14 @@ public class Sessao extends Entidade {
     private LocalDateTime horario;
     private Sala sala;
     private Audio audio;
-    private Integer ingressosVendidos;
-    private Float valorSessao;
+    private Short ingressosVendidos;
+    private Double valorSessao;
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Sessao() {
     }
 
-    public Sessao(Filme filme, LocalDateTime horario, Sala sala, Audio audio, Integer ingressosVendidos, Float valorSessao) {
+    public Sessao(Filme filme, LocalDateTime horario, Sala sala, Audio audio, Short ingressosVendidos, Double valorSessao) {
         this.filme = filme;
         this.horario = horario;
         this.sala = sala;
@@ -23,8 +23,8 @@ public class Sessao extends Entidade {
         this.ingressosVendidos = ingressosVendidos;
         this.valorSessao = valorSessao;
     }
-    //</editor-fold>
 
+    //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Filme getFilme() {
         return filme;
@@ -50,35 +50,34 @@ public class Sessao extends Entidade {
         this.sala = sala;
     }
 
-    public Audio getAudio() {
-        return audio;
+    public String getAudio() {
+        return audio.getDescription();
     }
 
     public void setAudio(Audio audio) {
         this.audio = audio;
     }
 
-    public Integer getIngressosVendidos() {
+    public Short getIngressosVendidos() {
         return ingressosVendidos;
     }
 
-    public void setIngressosVendidos(Integer ingressosVendidos) {
+    public void setIngressosVendidos(Short ingressosVendidos) {
         this.ingressosVendidos = ingressosVendidos;
     }
 
-    public Float getValorSessao() {
+    public Double getValorSessao() {
         return valorSessao;
     }
 
-    public void setValorSessao(Float valorSessao) {
+    public void setValorSessao(Double valorSessao) {
         this.valorSessao = valorSessao;
     }
-    //</editor-fold>
 
+    //</editor-fold>
     @Override
     public String toString() {
         return "Sessao{" + "filme=" + filme + ", horario=" + horario + ", sala=" + sala + ", audio=" + audio + ", ingressosVendidos=" + ingressosVendidos + ", valorSessao=" + valorSessao + '}';
     }
-    
 
 }

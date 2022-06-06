@@ -6,7 +6,11 @@ package br.edu.ifnmg.projetocinemapoo;
 
 import br.edu.ifnmg.projetocinemapoo.dao.FilmeDao;
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
+import br.edu.ifnmg.projetocinemapoo.dao.IngressoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
+//import br.edu.ifnmg.projetocinemapoo.dao.SessaoDao;
+import br.edu.ifnmg.projetocinemapoo.dao.VendaDao;
+import br.edu.ifnmg.projetocinemapoo.entity.Audio;
 import br.edu.ifnmg.projetocinemapoo.entity.Classificacao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
 import br.edu.ifnmg.projetocinemapoo.entity.Sala;
@@ -16,6 +20,9 @@ import br.edu.ifnmg.projetocinemapoo.entity.Filme;
 import br.edu.ifnmg.projetocinemapoo.entity.Sessao;
 import br.edu.ifnmg.projetocinemapoo.entity.Ingresso;
 import br.edu.ifnmg.projetocinemapoo.entity.Venda;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +54,7 @@ public class ProjetoCinemaPOO {
 //        g = new FuncionarioDao().localizarTodos();
 //        System.out.println(g);
         //TESTE
-        /* 
+         
         Sala sala = new Sala();
         sala.setNumero(01);
         sala.setCapacidade(300);
@@ -55,13 +62,43 @@ public class ProjetoCinemaPOO {
 
         SalaDao salaDao = new SalaDao();
         Long id = salaDao.salvar(sala);
-        sala.setId(id);*/
+
+        sala.setId(id);
+        System.out.println("Salas: " + salaDao.localizarTodos());
+        
+        
+        
+        /*Ingresso i = new Ingresso();
+        i.setMeiaEntada(Boolean.TRUE);
+        i.setPreco(15f);
+
+        IngressoDao iDao = new IngressoDao();
+        Long id = iDao.salvar(i);
+        i.setId(id);
+
+        System.out.println("Ingresso : " + iDao.localizarPorId(i.getId()));
+
+        System.out.println("Ingressos: " + iDao.localizarTodos());*/
+        
+         
+        
+        /*Venda v = new Venda();
+        v.setCodigoVenda((long)111555);
+        v.setQuantidade((short)5);
+        v.setValorTotal(123d);
+        
+        VendaDao vDao = new VendaDao();
+        Long id = vDao.salvar(v);
+        v.setId(id);
+        System.out.println("Venda : " + vDao.localizarPorId(v.getId()));
+        System.out.println("Vendas: " + vDao.localizarTodos());*/
+        
         /*
         Filme filme1 = new Filme();
         filme1.setId(4L);
         filme1.setNome("Velozes e Furiosos");
         filme1.setDuracao(2);
-        filme1.setClassificacao(Classificacao._14);
+        filme1.setClassificacao(Classificacao._16);
         
         System.out.println(">>"+filme1);
         
@@ -71,7 +108,7 @@ public class ProjetoCinemaPOO {
         filme2.setId(5l);
         filme2.setNome("Harry Potter");
         filme2.setDuracao(1);
-        filme2.setClassificacao(Classificacao._12);
+        filme2.setClassificacao(Classificacao._14);
         
         System.out.println(">>"+filme2);
         
@@ -93,5 +130,10 @@ public class ProjetoCinemaPOO {
             al.toString();
         }
         */
+
+
+        
+        
+
     }
 }
