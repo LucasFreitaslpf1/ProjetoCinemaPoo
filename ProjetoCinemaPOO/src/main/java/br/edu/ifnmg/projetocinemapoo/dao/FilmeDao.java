@@ -27,7 +27,7 @@ public class FilmeDao extends Dao<Filme, Long>{
     
     @Override
     public String obterSentencaUpdate() {
-        return "update filme set nome = ?, duracao = ?, calssificacao = ? where id = ?;";
+        return "update filme set nome = ?, duracao = ?, classificacao = ? where id = ?;";
     }
     
     @Override
@@ -68,7 +68,7 @@ public class FilmeDao extends Dao<Filme, Long>{
             filme.setId(resultSet.getLong("id"));
             filme.setNome(resultSet.getString("nome"));
             filme.setDuracao(resultSet.getInt("duracao"));
-            filme.setClassificacao((Classificacao)resultSet.getObject("classificacao"));
+            filme.setClassificacao((Classificacao) resultSet.getObject("classificacao"));
 
         } catch (SQLException ex) {
             Logger.getLogger(FilmeDao.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,6 +4,7 @@
  */
 package br.edu.ifnmg.projetocinemapoo;
 
+import br.edu.ifnmg.projetocinemapoo.dao.FilmeDao;
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Classificacao;
@@ -55,5 +56,42 @@ public class ProjetoCinemaPOO {
         SalaDao salaDao = new SalaDao();
         Long id = salaDao.salvar(sala);
         sala.setId(id);*/
+        /*
+        Filme filme1 = new Filme();
+        filme1.setId(4L);
+        filme1.setNome("Velozes e Furiosos");
+        filme1.setDuracao(2);
+        filme1.setClassificacao(Classificacao._14);
+        
+        System.out.println(">>"+filme1);
+        
+        new FilmeDao().salvar(filme1);
+        
+        Filme filme2 = new Filme();
+        filme2.setId(5l);
+        filme2.setNome("Harry Potter");
+        filme2.setDuracao(1);
+        filme2.setClassificacao(Classificacao._12);
+        
+        System.out.println(">>"+filme2);
+        
+        new FilmeDao().salvar(filme2);
+        */
+        /*
+        Filme fil = new Filme();
+        
+        
+        fil = new FilmeDao().localizarPorId(4L);
+        System.out.println("Pesquisado >>"+fil);
+        
+        
+        List<Filme> filmes = new ArrayList<>();
+        
+        filmes =  new FilmeDao().localizarTodos();
+        
+        for (Filme al : filmes) {
+            al.toString();
+        }
+        */
     }
 }
