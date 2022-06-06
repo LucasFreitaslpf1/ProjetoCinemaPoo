@@ -39,3 +39,15 @@ id serial,
 nome varchar(100) not null,
 primary key(id)
 ) engine = innodb;
+
+create table funcionario(
+id serial,
+nome varchar(100),
+primary key(id)
+);
+
+create table guiche(
+id serial,
+numero tinyint not null,
+primary key(id)
+);
