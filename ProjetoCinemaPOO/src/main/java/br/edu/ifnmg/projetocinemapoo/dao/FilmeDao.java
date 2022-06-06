@@ -68,7 +68,7 @@ public class FilmeDao extends Dao<Filme, Long>{
             filme.setId(resultSet.getLong("id"));
             filme.setNome(resultSet.getString("nome"));
             filme.setDuracao(resultSet.getInt("duracao"));
-            filme.setClassificacao((Classificacao)resultSet.getObject("classificacao"));
+            filme.setClassificacao(Classificacao.valueOf(resultSet.getString("classificacao")));
 
         } catch (SQLException ex) {
             Logger.getLogger(FilmeDao.class.getName()).log(Level.SEVERE, null, ex);
