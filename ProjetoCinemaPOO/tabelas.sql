@@ -44,13 +44,15 @@ create table funcionario(
 id serial,
 nome varchar(100),
 primary key(id)
-);
+) engine = innodb;
 
 create table guiche(
 id serial,
 numero tinyint not null,
-primary key(id)
-);
+funcionario_id bigint unsigned references funcionario(id),
+primary key(id),
+foreign key(funcionario_id) references funcionario(id)
+) engine = innodb;
 
 create table sessao(
 id serial,
