@@ -21,12 +21,12 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaInsert() {
-        return "insert into guiche (numero) values (?);";
+        return "insert into guiche (id,numero,funcionario_id) values ( default, ? , ? );";
     }
 
     @Override
     public String obterSentencaUpdate() {
-        return "update guiche set numero = ? where id = ?;";
+        return "update guiche set numero = ?, funcionario_id = ? where id = ?;";
     }
 
     @Override
@@ -34,9 +34,19 @@ public class GuicheDao extends Dao<Guiche, Long> {
         try {
             if (e.getId() == null || e.getId() == 0) {
                 pstmt.setInt(1, e.getNumero());
+                if (e.getFuncionario().getId() == null || e.getFuncionario().getId() == 0) {
+                    pstmt.setLong(2, new FuncionarioDao().salvar(e.getFuncionario()));
+                } else {
+                    pstmt.setLong(2, e.getFuncionario().getId());
+                }
             } else {
                 pstmt.setInt(1, e.getNumero());
-                pstmt.setLong(2, e.getId());
+                if (e.getFuncionario().getId() == 0 || e.getFuncionario().getId() == null) {
+                    pstmt.setLong(2, new FuncionarioDao().salvar(e.getFuncionario()));
+                } else {
+                    pstmt.setLong(2, e.getFuncionario().getId());
+                }
+                pstmt.setLong(3, e.getId());
             }
         } catch (Exception ex) {
             System.out.println("Exception: " + ex);
@@ -45,7 +55,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaLocalizarPorId() {
-        return "select id,numero from guiche where id=?;";
+        return "select id,numero,funcionario_id from guiche where id=?;";
     }
 
     @Override
@@ -53,6 +63,8 @@ public class GuicheDao extends Dao<Guiche, Long> {
         Guiche g = new Guiche();
         try {
             g.setId(resultSet.getLong("id"));
+            g.setFuncionario(new FuncionarioDao().
+                    localizarPorId(resultSet.getLong("funcionario_id")));
             g.setNumero(resultSet.getInt("numero"));
         } catch (SQLException ex) {
             Logger.getLogger(GuicheDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,7 +75,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaLocalizarTodos() {
-        return "select id,numero from guiche;";
+        return "select id,numero,funcionario_id from guiche;";
     }
 
     @Override

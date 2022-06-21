@@ -11,28 +11,37 @@ package br.edu.ifnmg.projetocinemapoo.entity;
 public class Guiche extends Entidade {
 
     private Integer numero;
+    private Funcionario funcionario;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Guiche() {
     }
 
-    public Guiche(Integer numero) {
+    public Guiche(Integer numero, Funcionario funcionario) {
         this.numero = numero;
+        this.funcionario = funcionario;
     }
 //</editor-fold>
-    //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-
+    //<editor-fold defaultstate="collapsed" desc="Getters Setters">
     public Integer getNumero() {
         return numero;
     }
-    
+
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
-//</editor-fold>
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    //</editor-fold>
 
     @Override
     public String toString() {
-        return "Guiche{" + "numero=" + numero + '}';
+        return "Guiche{" + "id=" + getId() + ", numero=" + numero + ", funcionario=" + funcionario + '}';
     }
 }
