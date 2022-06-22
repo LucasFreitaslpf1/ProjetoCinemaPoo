@@ -25,19 +25,20 @@ create table venda(
   primary key(id)
 )engine=InnoDB;
 
+create table genero(
+id serial,
+nome varchar(100) not null,
+primary key(id)
+) engine = innodb;
+
 create table filme(
 id serial,
 nome varchar(100) not null,
 duracao int not null,
 classificacao enum('LIVRE','_10','_12','_14','_16','_18'),
-generoprincipal varchar(100),
-primary key(id)
-) engine = innodb;
-
-create table genero(
-id serial,
-nome varchar(100) not null,
-primary key(id)
+generoprincipal_id bigint unsigned,
+primary key(id),
+foreign key(generoprincipal_id) references genero(id)
 ) engine = innodb;
 
 create table funcionario(

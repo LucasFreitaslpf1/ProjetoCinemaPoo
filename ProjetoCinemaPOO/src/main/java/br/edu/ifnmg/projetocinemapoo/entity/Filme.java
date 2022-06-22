@@ -12,15 +12,17 @@ public class Filme extends Entidade{
     private String nome;
     private Integer duracao;
     private Classificacao classificacao;
+    private Genero generoPrincipal;
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Filme() {
     }
 
-    public Filme(String nome, Integer duracao, Classificacao classificacao) {
+    public Filme(String nome, Integer duracao, Classificacao classificacao, Genero generoPrincipal) {
         this.nome = nome;
         this.duracao = duracao;
         this.classificacao = classificacao;
+        this.generoPrincipal = generoPrincipal;
     }
     //</editor-fold>
 
@@ -48,11 +50,20 @@ public class Filme extends Entidade{
     public void setClassificacao(Classificacao classificacao) {
         this.classificacao = classificacao;
     }
+
+    public Genero getGeneroPrincipal() {
+        return generoPrincipal;
+    }
+
+    public void setGeneroPrincipal(Genero generoPrincipal) {
+        this.generoPrincipal = generoPrincipal;
+    }
+    
     //</editor-fold>
 
     @Override
     public String toString() {
-        return "Filme{" + "nome=" + nome + ", duracao=" + duracao + ", classificacao=" + classificacao +'}';
+        return "Filme{" + "nome=" + nome + ", duracao=" + duracao + ", classificacao=" + classificacao + ", generoPrincipal=" + generoPrincipal + '}';
     }
     
 }

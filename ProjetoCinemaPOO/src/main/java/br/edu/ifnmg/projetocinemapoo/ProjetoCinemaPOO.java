@@ -105,21 +105,21 @@ public class ProjetoCinemaPOO {
         new FilmeDao().salvar(filme1);
         
         Filme filme2 = new Filme();
-        filme2.setNome("Harry Potter");
-        filme2.setDuracao(1);
+        filme2.setNome("Senhor dos aneis");
+        filme2.setDuracao(3);
         filme2.setClassificacao(Classificacao._14);
         
         System.out.println(">>"+filme2);
         
         new FilmeDao().salvar(filme2);
         */
-        /*
+         /*
         Filme fil = new Filme();
         
         
-        fil = new FilmeDao().localizarPorId(4L);
+        fil = new FilmeDao().localizarPorId(1L);
         System.out.println("Pesquisado >>"+fil);
-        
+       
         
         List<Filme> filmes = new ArrayList<>();
         
