@@ -3,15 +3,15 @@ package br.edu.ifnmg.projetocinemapoo.entity;
 public class Ingresso extends Entidade {
 
     private Boolean meiaEntada;
-    private Float preco;
+    private Double preco;
+    private Long vendaId;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Ingresso() {
     }
 
-    public Ingresso(Boolean meiaEntada, Float preco) {
+    public Ingresso(Boolean meiaEntada) {
         this.meiaEntada = meiaEntada;
-        this.preco = preco;
     }
     //</editor-fold>
 
@@ -24,13 +24,24 @@ public class Ingresso extends Entidade {
         this.meiaEntada = meiaEntada;
     }
 
-    public Float getPreco() {
+    public Double getPreco() {
         return preco;
     }
-
-    public void setPreco(Float preco) {
+    
+    /* Apenas classe venda pode colocar valor de ingresso, uma vez que
+       valor do ingresso depende do valor da Sessão. */ 
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
+
+    public Long getVendaId() {
+        return vendaId;
+    }
+
+    public void setVendaId(Long vendaId) {
+        this.vendaId = vendaId;
+    }
+    
     //</editor-fold>
 
     @Override

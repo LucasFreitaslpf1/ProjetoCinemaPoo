@@ -21,12 +21,12 @@ public class VendaDao extends Dao<Venda, Long> {
 
     @Override
     public String obterSentencaInsert() {
-        return "insert into venda (id, codigovenda, quantidade, valortotal) values (default, ?, ?, ?); ";
+        return "insert into venda (id, codigovenda, quantidade, guiche_id, sessao_id, valortotal) values (default, ?, ?, ?, ?, ?); ";
     }
 
     @Override
     public String obterSentencaUpdate() {
-        return "update venda set codigovenda = ?, quantidade = ?,valortotal = ? where id = ?;";
+        return "update venda set codigovenda = ?, quantidade = ?, guiche_id = ?, sessao_id = ?, valortotal = ? where id = ?;";
     }
 
     @Override
@@ -34,10 +34,12 @@ public class VendaDao extends Dao<Venda, Long> {
         try {
             pstmt.setLong(1, e.getCodigoVenda());
             pstmt.setShort(2, e.getQuantidade());
-            pstmt.setDouble(3, e.getValorTotal());
+            pstmt.setLong(3, e.getGuiche().getId());
+            pstmt.setLong(4, e.getSessao().getId());
+            pstmt.setDouble(5, e.getValorTotal());
 
             if (e.getId() != null && e.getId() != 0) {
-                pstmt.setLong(4, e.getId());
+                pstmt.setLong(6, e.getId());
             }
 
         } catch (SQLException ex) {
@@ -58,7 +60,16 @@ public class VendaDao extends Dao<Venda, Long> {
             v.setId(resultSet.getLong("id"));
             v.setCodigoVenda(resultSet.getLong("codigovenda"));
             v.setQuantidade(resultSet.getShort("quantidade"));
+            
+            Long guicheId = resultSet.getLong("guiche_id");
+            v.setGuiche(new GuicheDao().localizarPorId(guicheId));
+                    
+            Long sessaoId = resultSet.getLong("sessao_id");
+            v.setSessao(new SessaoDao().localizarPorId(sessaoId));
+            
             v.setValorTotal(resultSet.getDouble("valortotal"));
+            
+            v.setIngressos(new IngressoDao().localizarIngressosPorVenda(v));
 
         } catch (SQLException ex) {
             Logger.getLogger(VendaDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,7 +80,7 @@ public class VendaDao extends Dao<Venda, Long> {
 
     @Override
     public String obterSentencaLocalizarTodos() {
-        return "select id, codigovenda, quantidade, valortotal from venda;";
+        return "select id, codigovenda, quantidade, guiche_id, sessao_id, valortotal from venda;";
     }
 
     @Override

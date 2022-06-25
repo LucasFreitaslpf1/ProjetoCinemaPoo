@@ -1,6 +1,5 @@
 package br.edu.ifnmg.projetocinemapoo.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Venda extends Entidade {
@@ -15,16 +14,14 @@ public class Venda extends Entidade {
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Venda() {
 
-        ingressos = new ArrayList();
+        valorTotal = 0.0;
+        quantidade = 0;
     }
 
-    public Venda(Long codigoVenda, Short quantidade, Guiche guiche, Sessao sessao, List<Ingresso> ingressos, Double valorTotal) {
-        this.codigoVenda = codigoVenda;
-        this.quantidade = quantidade;
+    public Venda(Guiche guiche, Sessao sessao) {
+        this();
         this.guiche = guiche;
         this.sessao = sessao;
-        this.ingressos = ingressos;
-        this.valorTotal = valorTotal;
     }
 
     //</editor-fold>
@@ -70,6 +67,7 @@ public class Venda extends Entidade {
     }
 
     public Double getValorTotal() {
+
         return valorTotal;
     }
 
@@ -78,23 +76,9 @@ public class Venda extends Entidade {
     }
     //</editor-fold>
 
-    public void adicionarIngresso(Ingresso ingresso) {
-        ingressos.add(ingresso);
-    }
-
-    public void removerIngresso(Ingresso ingresso)
-            throws RuntimeException {
-        if (!ingressos.contains(ingresso)) {
-            throw new RuntimeException("Tentativa de remoção de ingresso inexistente");
-        }
-        ingressos.remove(ingresso);
-    }
-
     @Override
     public String toString() {
         return "Venda{" + "codigoVenda=" + codigoVenda + ", quantidade=" + quantidade + ", valorTotal=" + valorTotal + '}';
     }
-
-    
 
 }
