@@ -8,19 +8,33 @@ public class Sessao extends Entidade {
     private Audio audio;
     private Integer ingressosVendidos;
     private Double valorSessao;
+    private Filme filme;
+    private Sala sala;
+
+
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Sessao() {
     }
 
-    public Sessao(LocalDateTime horario, Audio audio, Integer ingressosVendidos, Double valorSessao) {
+    public Sessao(Filme filme, LocalDateTime horario, Sala sala, Audio audio, Integer ingressosVendidos, Double valorSessao) {
+        this.filme = filme;
         this.horario = horario;
+        this.sala = sala;
         this.audio = audio;
         this.ingressosVendidos = ingressosVendidos;
         this.valorSessao = valorSessao;
     }
+
 //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filme filme) {
+        this.filme = filme;
+    }
 
     public LocalDateTime getHorario() {
         return horario;
@@ -30,8 +44,16 @@ public class Sessao extends Entidade {
         this.horario = horario;
     }
 
-    public String getAudio() {
-        return audio.getDescription();
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+
+    public Audio getAudio() {
+        return audio;
     }
 
     public void setAudio(Audio audio) {
@@ -52,12 +74,11 @@ public class Sessao extends Entidade {
 
     public void setValorSessao(Double valorSessao) {
         this.valorSessao = valorSessao;
-    }    
-//</editor-fold>
-
-    @Override
-    public String toString() {
-        return "Sessao{" + "horario=" + horario + ", audio=" + audio + ", ingressosVendidos=" + ingressosVendidos + ", valorSessao=" + valorSessao + '}';
     }
 
+//</editor-fold>
+    @Override
+    public String toString() {
+        return "Sessao{" + "filme=" + filme + ", horario=" + horario + ", sala=" + sala + ", audio=" + audio + ", ingressosVendidos=" + ingressosVendidos + ", valorSessao=" + valorSessao + '}';
+    }
 }

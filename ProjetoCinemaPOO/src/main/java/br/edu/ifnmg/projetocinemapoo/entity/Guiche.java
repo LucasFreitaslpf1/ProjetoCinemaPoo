@@ -4,6 +4,8 @@
  */
 package br.edu.ifnmg.projetocinemapoo.entity;
 
+import java.util.List;
+
 /**
  *
  * @author Lucas
@@ -12,6 +14,7 @@ public class Guiche extends Entidade {
 
     private Integer numero;
     private Funcionario funcionario;
+    List<Venda> vendas;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Guiche() {
