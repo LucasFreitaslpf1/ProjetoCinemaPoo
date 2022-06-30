@@ -55,11 +55,9 @@ create table venda(
   id serial,
   codigovenda bigint(20) not null,
   quantidade smallint,
-  guiche_id bigint unsigned ,
   sessao_id bigint unsigned,
   valortotal float,
   primary key(id),
-  constraint fk_id_guiche  foreign key(guiche_id) references guiche(id),
   constraint fk_id_sessao foreign key(sessao_id) references sessao(id)
 )engine=InnoDB;
 
@@ -72,3 +70,15 @@ create table ingresso(
   primary key(id),
   constraint fk_id_venda  foreign key(venda_id) references venda(id)
 )engine=InnoDB;
+
+create table guichevenda_id(
+	guiche_id bigint unsigned references guiche(id),
+	venda_id bigint unsigned references venda(id),
+	foreign key(guiche_id) references guiche(id),
+	foreign key (venda_id) references venda(id)
+) engine = innodb;
+
+alter table sessao add filme_id bigint unsigned references filme(id);
+alter table sessao add foreign key(filme_id) references filme(id);
+alter table sessao add sala_id bigint unsigned references sala(id);
+alter table sessao add foreign key(sala_id) references sala(id);
