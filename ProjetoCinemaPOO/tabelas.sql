@@ -5,12 +5,14 @@ use projetocinema;
 create table funcionario(
 id serial,
 nome varchar(100),
+senha varchar(32) not null,
+tipofuncionario ENUM('GERENTE','CAIXA'),
 primary key(id)
 ) engine = innodb;
 
 create table guiche(
 id serial,
-numero tinyint not null,
+numero tinyint not null unique,
 funcionario_id bigint unsigned references funcionario(id),
 primary key(id),
 foreign key(funcionario_id) references funcionario(id)
