@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.projetocinemapoo.dao;
 
-import br.edu.ifnmg.projetocinemapoo.entity.Audio;
+import br.edu.ifnmg.projetocinemapoo.enums.Audio;
 import br.edu.ifnmg.projetocinemapoo.entity.Sessao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -4,7 +4,7 @@
  */
 package br.edu.ifnmg.projetocinemapoo.dao;
 
-import br.edu.ifnmg.projetocinemapoo.entity.Classificacao;
+import br.edu.ifnmg.projetocinemapoo.enums.Classificacao;
 import br.edu.ifnmg.projetocinemapoo.entity.Filme;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,13 +47,13 @@ public class FilmeDao extends Dao<Filme, Long>{
             if (e.getId() == null || e.getId() == 0) {
                 pstmt.setString(1, e.getNome());
                 pstmt.setInt(2, e.getDuracao());
-                pstmt.setString(3, e.getClassificacao());
+                pstmt.setString(3, e.getClassificacao().getDescription());
                 pstmt.setLong(4, e.getGeneroPrincipal().getId());
 
             } else {
                 pstmt.setString(1, e.getNome());
                 pstmt.setInt(2, e.getDuracao());
-                pstmt.setString(3, e.getClassificacao());
+                pstmt.setString(3, e.getClassificacao().getDescription());
                 pstmt.setLong(4, e.getGeneroPrincipal().getId());
                 pstmt.setLong(5, e.getId());
             }

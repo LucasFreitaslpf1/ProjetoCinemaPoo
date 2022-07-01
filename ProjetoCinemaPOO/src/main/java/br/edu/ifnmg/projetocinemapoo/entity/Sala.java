@@ -35,8 +35,8 @@ public class Sala extends Entidade {
         this.capacidade = capacidade;
     }
 
-    public String getTela() {
-        return tela.getDescription();
+    public Tela getTela() {
+        return tela;
     }
 
     public void setTela(Tela tela) {

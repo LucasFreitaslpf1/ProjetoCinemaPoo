@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.ifnmg.projetocinemapoo.entity;
+package br.edu.ifnmg.projetocinemapoo.dao;
 
 import br.edu.ifnmg.projetocinemapoo.dao.ConexaoBd;
 import br.edu.ifnmg.projetocinemapoo.dao.VendaDao;
+import br.edu.ifnmg.projetocinemapoo.entity.GuicheVenda;
+import br.edu.ifnmg.projetocinemapoo.entity.Venda;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

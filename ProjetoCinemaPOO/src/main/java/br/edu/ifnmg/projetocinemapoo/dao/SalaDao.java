@@ -29,7 +29,7 @@ public class SalaDao extends Dao<Sala, Long> {
             pstmt.setInt(1, e.getNumero());
             pstmt.setInt(2, e.getCapacidade());
             //pstmt.setObject(3, e.getTela(), java.sql.Types.VARCHAR);
-            pstmt.setString(3, e.getTela());
+            pstmt.setString(3, e.getTela().getDescription());
             if (e.getId() != null && e.getId() != 0) {
                 pstmt.setLong(4, e.getId());
             }

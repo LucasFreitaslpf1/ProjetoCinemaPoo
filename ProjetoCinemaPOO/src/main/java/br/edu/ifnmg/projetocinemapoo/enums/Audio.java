@@ -1,4 +1,4 @@
-package br.edu.ifnmg.projetocinemapoo.entity;
+package br.edu.ifnmg.projetocinemapoo.enums;
 
 public enum Audio {
     // LEGENDADO,DUBLADO;

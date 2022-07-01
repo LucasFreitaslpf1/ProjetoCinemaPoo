@@ -1,5 +1,6 @@
 package br.edu.ifnmg.projetocinemapoo.entity;
 
+import br.edu.ifnmg.projetocinemapoo.enums.Audio;
 import java.time.LocalDateTime;
 
 public class Sessao extends Entidade {

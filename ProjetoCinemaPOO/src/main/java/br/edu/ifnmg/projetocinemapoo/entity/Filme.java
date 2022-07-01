@@ -4,6 +4,8 @@
  */
 package br.edu.ifnmg.projetocinemapoo.entity;
 
+import br.edu.ifnmg.projetocinemapoo.enums.Classificacao;
+
 /**
  *
  * @author ThiagoRiquelmo
@@ -43,8 +45,8 @@ public class Filme extends Entidade{
         this.duracao = duracao;
     }
 
-    public String getClassificacao() {
-        return classificacao.getDescription();
+    public Classificacao getClassificacao() {
+        return classificacao;
     }
 
     public void setClassificacao(Classificacao classificacao) {
