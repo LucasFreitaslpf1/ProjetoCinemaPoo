@@ -11,8 +11,8 @@ import br.edu.ifnmg.projetocinemapoo.dao.GuicheDao;
 import br.edu.ifnmg.projetocinemapoo.dao.IngressoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SessaoDao;
-//import br.edu.ifnmg.projetocinemapoo.dao.SessaoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.VendaDao;
+
 import br.edu.ifnmg.projetocinemapoo.entity.Audio;
 import br.edu.ifnmg.projetocinemapoo.entity.Classificacao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
@@ -24,11 +24,7 @@ import br.edu.ifnmg.projetocinemapoo.entity.Guiche;
 import br.edu.ifnmg.projetocinemapoo.entity.Sessao;
 import br.edu.ifnmg.projetocinemapoo.entity.Ingresso;
 import br.edu.ifnmg.projetocinemapoo.entity.Venda;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
 
 /**
@@ -38,174 +34,229 @@ import java.util.Arrays;
 public class ProjetoCinemaPOO {
 
     public static void main(String[] args) {
-        // testes
 
-//        Funcionario g = new Funcionario();
-//        g.setNome("Asd");
-//        
-//        new FuncionarioDao().salvar(g);
-////        
-//        Funcionario g = new Funcionario();
-//        g.setId(2L);
-//        g.setNome("lucas");
-//        
-//        new FuncionarioDao().salvar(g);
-//        Funcionario g = new Funcionario();
-//        
-//        g = new FuncionarioDao().localizarPorId(3L);
-//        System.out.println(g);
-//        List<Funcionario> g = new ArrayList<>();
-//
-//        g = new FuncionarioDao().localizarTodos();
-//        System.out.println(g);
-        //TESTE
-        /*
-        Sala sala = new Sala();
-        sala.setNumero(01);
-        sala.setCapacidade(300);
-        sala.setTela(Tela._3D);
+        //TESTE GERAL
+        Funcionario funcionario1 = new Funcionario();
+        funcionario1.setNome("Ana Paula");
 
-        SalaDao salaDao = new SalaDao();
-        Long id = salaDao.salvar(sala);
+        FuncionarioDao funcionarioDao1 = new FuncionarioDao();
+        Long funcionarioId1 = funcionarioDao1.salvar(funcionario1);
+        funcionario1.setId(funcionarioId1);
 
-        sala.setId(id);
-        System.out.println("Salas: " + salaDao.localizarTodos());
-         */
- /*Ingresso i = new Ingresso();
-        i.setMeiaEntada(Boolean.TRUE);
-        i.setPreco(15f);
+        Funcionario funcionario2 = new Funcionario();
+        funcionario2.setNome("Jorge Augusto");
 
-        IngressoDao iDao = new IngressoDao();
-        Long id = iDao.salvar(i);
-        i.setId(id);
+        FuncionarioDao funcionarioDao2 = new FuncionarioDao();
+        Long funcionarioId2 = funcionarioDao2.salvar(funcionario2);
+        funcionario2.setId(funcionarioId2);
 
-        System.out.println("Ingresso : " + iDao.localizarPorId(i.getId()));
+        Guiche guiche1 = new Guiche();
+        guiche1.setNumero(1);
+        guiche1.setFuncionario(funcionario1);
 
-        System.out.println("Ingressos: " + iDao.localizarTodos());*/
- /*Venda v = new Venda();
-        v.setCodigoVenda((long)111555);
-        v.setQuantidade((short)5);
-        v.setValorTotal(123d);
-        
-        VendaDao vDao = new VendaDao();
-        Long id = vDao.salvar(v);
-        v.setId(id);
-        System.out.println("Venda : " + vDao.localizarPorId(v.getId()));
-        System.out.println("Vendas: " + vDao.localizarTodos());*/
- /*
+        GuicheDao guicheDao1 = new GuicheDao();
+        Long guicheId1 = guicheDao1.salvar(guiche1);
+        guiche1.setId(guicheId1);
+
+        Guiche guiche2 = new Guiche();
+        guiche2.setNumero(2);
+        guiche2.setFuncionario(funcionario2);
+
+        GuicheDao guicheDao2 = new GuicheDao();
+        Long guicheId2 = guicheDao2.salvar(guiche2);
+        guiche2.setId(guicheId2);
+
+        Genero genero1 = new Genero();
+        genero1.setNome("Romance");
+
+        GeneroDao generoDao1 = new GeneroDao();
+        Long genroId1 = generoDao1.salvar(genero1);
+        genero1.setId(genroId1);
+
+        Genero genero2 = new Genero();
+        genero2.setNome("Suspense");
+
+        GeneroDao generoDao2 = new GeneroDao();
+        Long genroId2 = generoDao2.salvar(genero2);
+        genero2.setId(genroId2);
+
+        Genero genero3 = new Genero();
+        genero3.setNome("Terror");
+
+        GeneroDao generoDao3 = new GeneroDao();
+        Long genroId3 = generoDao3.salvar(genero3);
+        genero3.setId(genroId3);
+
         Filme filme1 = new Filme();
-        filme1.setNome("Forest Gump");
-        filme1.setDuracao(2);
-        filme1.setClassificacao(Classificacao._16);
-        
-        System.out.println(">>"+filme1);
-        
-        new FilmeDao().salvar(filme1);
-        
+        filme1.setNome("Filme 1");
+        filme1.setDuracao(111);
+        filme1.setClassificacao(Classificacao.LIVRE);
+        filme1.setGeneroPrincipal(genero1);
+
+        FilmeDao filmeDao1 = new FilmeDao();
+        Long filmeId1 = filmeDao1.salvar(filme1);
+        filme1.setId(filmeId1);
+
         Filme filme2 = new Filme();
-        filme2.setNome("Senhor dos aneis");
-        filme2.setDuracao(3);
-        filme2.setClassificacao(Classificacao._14);
-        
-        System.out.println(">>"+filme2);
-        
-        new FilmeDao().salvar(filme2);
-         */
- /*
-        Filme fil = new Filme();
-        
-        
-        fil = new FilmeDao().localizarPorId(1L);
-        System.out.println("Pesquisado >>"+fil);
-       
-        
-        List<Filme> filmes = new ArrayList<>();
-        
-        filmes =  new FilmeDao().localizarTodos();
-        
-        for (Filme al : filmes) {
-            al.toString();
-        }
-         */
-        //Genero genero1 = new Genero();
-        //genero1.setNome("Romance");
-        //new GeneroDao().salvar(genero1);
-        
-        
-        
-        
-        
-        //TESTE RELAÇÃO VENDA COM INGRESSO
-        /*Funcionario funcionario = new Funcionario();
-        funcionario.setNome("ANA");
+        filme2.setNome("Filme 2");
+        filme2.setDuracao(222);
+        filme2.setClassificacao(Classificacao._12);
+        filme2.setGeneroPrincipal(genero2);
 
-        FuncionarioDao funcionarioDao = new FuncionarioDao();
-        Long funcionarioId = funcionarioDao.salvar(funcionario);
-        funcionario.setId(funcionarioId);
+        FilmeDao filmeDao2 = new FilmeDao();
+        Long filmeId2 = filmeDao2.salvar(filme2);
+        filme2.setId(filmeId2);
 
-        Guiche guiche = new Guiche();
-        guiche.setNumero(5);
-        guiche.setFuncionario(funcionario);
+        Filme filme3 = new Filme();
+        filme3.setNome("Filme 3");
+        filme3.setDuracao(333);
+        filme3.setClassificacao(Classificacao._16);
+        filme3.setGeneroPrincipal(genero3);
 
-        GuicheDao guicheDao = new GuicheDao();
-        Long guicheId = guicheDao.salvar(guiche);
-        guiche.setId(guicheId);
+        FilmeDao filmeDao3 = new FilmeDao();
+        Long filmeId3 = filmeDao3.salvar(filme3);
+        filme3.setId(filmeId3);
 
-        Sessao sessao = new Sessao();
-        sessao.setAudio(Audio.DUBLADO);
-        sessao.setIngressosVendidos(78);
-        sessao.setHorario(LocalDateTime.now());
-        sessao.setValorSessao(18d);
+        Sala sala1 = new Sala();
+        sala1.setNumero(1);
+        sala1.setCapacidade(111);
+        sala1.setTela(Tela._2D);
 
-        SessaoDao sessaoDao = new SessaoDao();
-        Long sessaoId = sessaoDao.salvar(sessao);
-        sessao.setId(sessaoId);
+        SalaDao salaDao1 = new SalaDao();
+        Long salaId1 = salaDao1.salvar(sala1);
+        sala1.setId(salaId1);
 
-        Venda venda = new Venda();
-        venda.setCodigoVenda((long) 111555);
-        venda.setQuantidade((short) 5);
-        venda.setGuiche(guiche);
-        venda.setSessao(sessao);
-        venda.setValorTotal(77d);
+        Sala sala2 = new Sala();
+        sala2.setNumero(2);
+        sala2.setCapacidade(222);
+        sala2.setTela(Tela._3D);
 
-        VendaDao vendaDao = new VendaDao();
-        Long vendaId = vendaDao.salvar(venda);
-        venda.setId(vendaId);
+        SalaDao salaDao2 = new SalaDao();
+        Long salaId2 = salaDao2.salvar(sala2);
+        sala2.setId(salaId2);
+
+        Sessao sessao1 = new Sessao();
+        sessao1.setFilme(filme1);
+        sessao1.setHorario(LocalDateTime.of(2022, 7, 21, 15, 30));
+        sessao1.setSala(sala1);
+        sessao1.setAudio(Audio.DUBLADO);
+        sessao1.setIngressosVendidos(11);
+        sessao1.setValorSessao(11.5);
+
+        SessaoDao sessaoDao1 = new SessaoDao();
+        Long sessaoId1 = sessaoDao1.salvar(sessao1);
+        sessao1.setId(sessaoId1);
+
+        Sessao sessao2 = new Sessao();
+        sessao2.setFilme(filme2);
+        sessao2.setHorario(LocalDateTime.of(2022, 7, 25, 12, 00));
+        sessao2.setSala(sala2);
+        sessao2.setAudio(Audio.LEGENDADO);
+        sessao2.setIngressosVendidos(22);
+        sessao2.setValorSessao(12.5);
+
+        SessaoDao sessaoDao2 = new SessaoDao();
+        Long sessaoId2 = sessaoDao2.salvar(sessao2);
+        sessao2.setId(sessaoId2);
+
+        Sessao sessao3 = new Sessao();
+        sessao3.setFilme(filme3);
+        sessao3.setHorario(LocalDateTime.of(2022, 7, 27, 14, 00));
+        sessao3.setSala(sala1);
+        sessao3.setAudio(Audio.LEGENDADO);
+        sessao3.setIngressosVendidos(33);
+        sessao3.setValorSessao(13.5);
+
+        SessaoDao sessaoDao3 = new SessaoDao();
+        Long sessaoId3 = sessaoDao3.salvar(sessao3);
+        sessao3.setId(sessaoId3);
+
+        Venda venda1 = new Venda();
+        venda1.setCodigoVenda((long) 1111111111);
+        venda1.setQuantidade((short) 3);
+        venda1.setGuiche(guiche1);
+        venda1.setSessao(sessao1);
+        venda1.setValorTotal(111.0);
+
+        VendaDao vendaDao1 = new VendaDao();
+        Long vendaId1 = vendaDao1.salvar(venda1);
+        venda1.setId(vendaId1);
 
         Ingresso ingresso1 = new Ingresso();
         ingresso1.setMeiaEntada(Boolean.TRUE);
         ingresso1.setPreco(12D);
-        ingresso1.setVendaId(vendaId);
+        ingresso1.setVendaId(vendaId1);
 
         IngressoDao ingressoDao1 = new IngressoDao();
-        Long id1 = ingressoDao1.salvar(ingresso1);
-        ingresso1.setId(id1);
+        Long ingressoId1 = ingressoDao1.salvar(ingresso1);
+        ingresso1.setId(ingressoId1);
 
         Ingresso ingresso2 = new Ingresso();
         ingresso2.setMeiaEntada(Boolean.FALSE);
         ingresso2.setPreco(13D);
-        ingresso2.setVendaId(vendaId);
+        ingresso2.setVendaId(vendaId1);
 
         IngressoDao ingressoDao2 = new IngressoDao();
-        Long id2 = ingressoDao2.salvar(ingresso2);
-        ingresso2.setId(id2);
+        Long ingressoId2 = ingressoDao2.salvar(ingresso2);
+        ingresso2.setId(ingressoId2);
 
         Ingresso ingresso3 = new Ingresso();
         ingresso3.setMeiaEntada(Boolean.TRUE);
         ingresso3.setPreco(15D);
-        ingresso3.setVendaId(vendaId);
+        ingresso3.setVendaId(vendaId1);
 
         IngressoDao ingressoDao3 = new IngressoDao();
-        Long id3 = ingressoDao3.salvar(ingresso3);
-        ingresso3.setId(id3);
+        Long ingressoId3 = ingressoDao3.salvar(ingresso3);
+        ingresso3.setId(ingressoId3);
 
-        venda.setIngressos(Arrays.asList(new Ingresso[]{ingresso1, ingresso2, ingresso3}));
-        
-        System.out.println("Ingresso: " + ingressoDao3.localizarPorId(ingresso3.getId()));
-        System.out.println("Ingressos: " + ingressoDao3.localizarTodos());
-        
-        System.out.println("Venda : " + vendaDao.localizarPorId(venda.getId()));
-        System.out.println("Vendas: " + vendaDao.localizarTodos());*/
+        venda1.setIngressos(Arrays.asList(new Ingresso[]{ingresso1, ingresso2, ingresso3}));
+
+        Venda venda2 = new Venda();
+        venda2.setCodigoVenda((long) 22222222);
+        venda2.setQuantidade((short) 2);
+        venda2.setGuiche(guiche2);
+        venda2.setSessao(sessao2);
+        venda2.setValorTotal(222.0);
+
+        VendaDao vendaDao2 = new VendaDao();
+        Long vendaId2 = vendaDao2.salvar(venda2);
+        venda2.setId(vendaId2);
+
+        Ingresso ingresso4 = new Ingresso();
+        ingresso4.setMeiaEntada(Boolean.TRUE);
+        ingresso4.setPreco(16D);
+        ingresso4.setVendaId(vendaId2);
+
+        IngressoDao ingressoDao4 = new IngressoDao();
+        Long ingressoId4 = ingressoDao4.salvar(ingresso4);
+        ingresso4.setId(ingressoId4);
+
+        Ingresso ingresso5 = new Ingresso();
+        ingresso5.setMeiaEntada(Boolean.FALSE);
+        ingresso5.setPreco(18D);
+        ingresso5.setVendaId(vendaId2);
+
+        IngressoDao ingressoDao5 = new IngressoDao();
+        Long ingressoId5 = ingressoDao5.salvar(ingresso5);
+        ingresso5.setId(ingressoId5);
+
+        venda2.setIngressos(Arrays.asList(new Ingresso[]{ingresso4, ingresso5}));
+
+        System.out.println("\n>>>>FUNCIONÁRIOS: " + new FuncionarioDao().localizarTodos()+ "\n");
+
+        System.out.println("\n>>>>GUICHÊS: " + new GuicheDao().localizarTodos()+ "\n");
+
+        System.out.println("\n>>>>GÊNEROS: " + new GeneroDao().localizarTodos()+ "\n");
+
+        System.out.println("\n>>>>FILMES: " + new FilmeDao().localizarTodos()+ "\n");
+
+        System.out.println("\n>>>>SALAS: " + new SalaDao().localizarTodos()+ "\n");
+
+        System.out.println("\n>>>>SESSÕES: " + new SessaoDao().localizarTodos()+ "\n");
+
+        System.out.println("\n>>>>VENDAS: " + new VendaDao().localizarTodos()+ "\n");
+
+        System.out.println("\n>>>>INGRESSOS: " + new IngressoDao().localizarTodos()+ "\n");
 
     }
 }
