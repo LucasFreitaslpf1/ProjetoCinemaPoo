@@ -45,6 +45,6 @@ public class Guiche extends Entidade {
 
     @Override
     public String toString() {
-        return "Guiche{" + "id=" + getId() + ", numero=" + numero + ", funcionario=" + funcionario + '}';
+        return "Guiche " + numero;
     }
 }

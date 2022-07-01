@@ -16,19 +16,21 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    private Principal(Funcionario F) {
+    private Principal(Funcionario f) {
         initComponents();
-        
-        if(F.getTipoFuncionario() != TipoFuncionario.GERENTE){
+
+        if (f.getTipoFuncionario() != TipoFuncionario.GERENTE) {
+            mnuRelatorios.setEnabled(false);
             mnuCadastrosFuncionario.setEnabled(false);
+            mnuCadastrosGuiche.setEnabled(false);
         }
     }
-    
+
     public static Principal principal;
-    
-    public static Principal getInstancia(Funcionario F){
-        if(principal == null){
-            principal = new Principal(F);
+
+    public static Principal getInstancia(Funcionario f) {
+        if (principal == null) {
+            principal = new Principal(f);
         }
         return principal;
     }
@@ -43,19 +45,28 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuArquivoSair = new javax.swing.JMenuItem();
         mnuCadastros = new javax.swing.JMenu();
         mnuCadastrosFuncionario = new javax.swing.JMenuItem();
+        mnuCadastrosGuiche = new javax.swing.JMenuItem();
+        mnuCadastrosFilme = new javax.swing.JMenuItem();
+        mnuCadastrosSala = new javax.swing.JMenuItem();
+        mnuCadastrosGenero = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         mnuRelatorios = new javax.swing.JMenu();
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
+        jMenu1.setText("jMenu1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
+        setResizable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,6 +82,11 @@ public class Principal extends javax.swing.JFrame {
         mnuArquivo.setText("Arquivo");
 
         mnuArquivoSair.setText("Sair");
+        mnuArquivoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuArquivoSairActionPerformed(evt);
+            }
+        });
         mnuArquivo.add(mnuArquivoSair);
 
         jMenuBar1.add(mnuArquivo);
@@ -78,9 +94,39 @@ public class Principal extends javax.swing.JFrame {
         mnuCadastros.setText("Cadastros");
 
         mnuCadastrosFuncionario.setText("Funcionario");
+        mnuCadastrosFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrosFuncionarioActionPerformed(evt);
+            }
+        });
         mnuCadastros.add(mnuCadastrosFuncionario);
 
+        mnuCadastrosGuiche.setText("Guiche");
+        mnuCadastrosGuiche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrosGuicheActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mnuCadastrosGuiche);
+
+        mnuCadastrosFilme.setText("Filme");
+        mnuCadastros.add(mnuCadastrosFilme);
+
+        mnuCadastrosSala.setText("Sala");
+        mnuCadastrosSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrosSalaActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mnuCadastrosSala);
+
+        mnuCadastrosGenero.setText("Genero");
+        mnuCadastros.add(mnuCadastrosGenero);
+
         jMenuBar1.add(mnuCadastros);
+
+        jMenu2.setText("Venda");
+        jMenuBar1.add(jMenu2);
 
         mnuRelatorios.setText("Relatorios");
 
@@ -106,15 +152,42 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnuCadastrosSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosSalaActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_mnuCadastrosSalaActionPerformed
+
+    private void mnuCadastrosFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosFuncionarioActionPerformed
+        // TODO add your handling code here:
+        CadastroFuncionarios cf = CadastroFuncionarios.getInstancia();
+        cf.setVisible(true);
+    }//GEN-LAST:event_mnuCadastrosFuncionarioActionPerformed
+
+    private void mnuArquivoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoSairActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_mnuArquivoSairActionPerformed
+
+    private void mnuCadastrosGuicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosGuicheActionPerformed
+        // TODO add your handling code here:
+        CadastroGuiche.getInstancia().setVisible(true);
+    }//GEN-LAST:event_mnuCadastrosGuicheActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu mnuArquivo;
     private javax.swing.JMenuItem mnuArquivoSair;
     private javax.swing.JMenu mnuCadastros;
+    private javax.swing.JMenuItem mnuCadastrosFilme;
     private javax.swing.JMenuItem mnuCadastrosFuncionario;
+    private javax.swing.JMenuItem mnuCadastrosGenero;
+    private javax.swing.JMenuItem mnuCadastrosGuiche;
+    private javax.swing.JMenuItem mnuCadastrosSala;
     private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
     // End of variables declaration//GEN-END:variables

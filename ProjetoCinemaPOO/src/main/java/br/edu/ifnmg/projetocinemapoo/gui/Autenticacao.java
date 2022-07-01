@@ -5,7 +5,11 @@
 package br.edu.ifnmg.projetocinemapoo.gui;
 
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
+import br.edu.ifnmg.projetocinemapoo.dao.GuicheDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
+import br.edu.ifnmg.projetocinemapoo.entity.Guiche;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,6 +51,11 @@ public class Autenticacao extends javax.swing.JFrame {
         lblNome.setText("Nome:");
 
         txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
 
         lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSenha.setText("Senha:");
@@ -64,20 +73,21 @@ public class Autenticacao extends javax.swing.JFrame {
         pnlAutenticacaoLayout.setHorizontalGroup(
             pnlAutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAutenticacaoLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(42, 42, 42)
                 .addGroup(pnlAutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAutenticar)
                     .addGroup(pnlAutenticacaoLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
                         .addGroup(pnlAutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblNome)
                             .addGroup(pnlAutenticacaoLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(lblSenha))
-                            .addComponent(lblNome))
+                                .addComponent(lblSenha)
+                                .addGap(3, 3, 3)))
                         .addGap(18, 18, 18)
                         .addGroup(pnlAutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNome)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         pnlAutenticacaoLayout.setVerticalGroup(
             pnlAutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,13 +96,13 @@ public class Autenticacao extends javax.swing.JFrame {
                 .addGroup(pnlAutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(pnlAutenticacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSenha)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(btnAutenticar)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,19 +128,23 @@ public class Autenticacao extends javax.swing.JFrame {
 
     private void btnAutenticarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutenticarActionPerformed
         // TODO add your handling code here:
+        
         Funcionario funcionario = new Funcionario();
         funcionario.setNome(txtNome.getText());
         funcionario.setSenha(String.valueOf(txtSenha.getPassword()));
-        
         Funcionario retorno = new FuncionarioDao().autenticar(funcionario);
-      
-        if(retorno == null){
+        
+        if (retorno == null) {
             JOptionPane.showMessageDialog(null, "Acesso negado");
-        } else{
+        } else {
             Principal.getInstancia(retorno).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnAutenticarActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments

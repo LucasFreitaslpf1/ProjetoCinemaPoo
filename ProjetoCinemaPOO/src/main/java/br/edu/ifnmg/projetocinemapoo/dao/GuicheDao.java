@@ -21,7 +21,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaInsert() {
-        return "insert into guiche (id,numero,funcionario_id) values ( default, ? , ? );";
+        return "insert into guiche (id,numero) values ( default, ?);";
     }
 
     @Override
@@ -34,11 +34,6 @@ public class GuicheDao extends Dao<Guiche, Long> {
         try {
             if (e.getId() == null || e.getId() == 0) {
                 pstmt.setInt(1, e.getNumero());
-                if (e.getFuncionario().getId() == null || e.getFuncionario().getId() == 0) {
-                    pstmt.setLong(2, new FuncionarioDao().salvar(e.getFuncionario()));
-                } else {
-                    pstmt.setLong(2, e.getFuncionario().getId());
-                }
             } else {
                 pstmt.setInt(1, e.getNumero());
                 if (e.getFuncionario().getId() == 0 || e.getFuncionario().getId() == null) {
@@ -90,5 +85,26 @@ public class GuicheDao extends Dao<Guiche, Long> {
         }
 
         return guiches;
+    }
+
+    public Guiche localizarPorNumero(Integer numero) {
+
+        try ( PreparedStatement preparedStatement
+                = ConexaoBd
+                        .getConexao()
+                        .prepareStatement(
+                                "select id,numero,funcionario_id from guiche where numero = ?")) {
+            
+                    preparedStatement.setInt(1, numero);
+                    
+                    ResultSet rs = preparedStatement.executeQuery();
+                    
+                    if (rs.next()) {
+                        return extrairObjeto(rs);
+                    }
+                } catch (Exception ex) {
+                    System.out.println(">> " + ex);
+                }
+        return null;
     }
 }
