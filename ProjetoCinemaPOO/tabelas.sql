@@ -55,10 +55,12 @@ create table venda(
   id serial,
   codigovenda bigint(20) not null,
   quantidade smallint,
+  guiche_id bigint unsigned,
   sessao_id bigint unsigned,
   valortotal float,
   primary key(id),
-  constraint fk_id_sessao foreign key(sessao_id) references sessao(id)
+  foreign key(guiche_id) references guiche(id),
+  foreign key(sessao_id) references sessao(id)
 )engine=InnoDB;
 
 
