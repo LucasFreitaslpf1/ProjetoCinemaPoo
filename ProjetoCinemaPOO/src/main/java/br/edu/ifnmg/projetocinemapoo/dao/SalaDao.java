@@ -86,5 +86,26 @@ public class SalaDao extends Dao<Sala, Long> {
 
         return salas;
     }
+    
+    public Sala localizarPorNumero(Integer numero) {
+
+        try ( PreparedStatement preparedStatement
+                = ConexaoBd
+                        .getConexao()
+                        .prepareStatement(
+                                "select id, numero, capacidade, tela from sala where numero = ?")) {
+            
+                    preparedStatement.setInt(1, numero);
+                    
+                    ResultSet rs = preparedStatement.executeQuery();
+                    
+                    if (rs.next()) {
+                        return extrairObjeto(rs);
+                    }
+                } catch (Exception ex) {
+                    System.out.println(">> " + ex);
+                }
+        return null;
+    }
 
 }

@@ -7,6 +7,7 @@ package br.edu.ifnmg.projetocinemapoo.gui;
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Sala;
 import br.edu.ifnmg.projetocinemapoo.enums.Tela;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -143,10 +144,15 @@ public class CadastroSala extends javax.swing.JFrame {
         sala.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
         sala.setTela(Tela.valueOf(txtTela.getText()));
         
-        Long id = new SalaDao().salvar(sala);
-        sala.setId(id);
-        
-        limparCampos();
+         Sala s = new SalaDao().localizarPorNumero(sala.getNumero());
+        if(s != null){
+            JOptionPane.showMessageDialog(null, "Sala já cadastrada");            
+        } else{
+            
+            Long id = new SalaDao().salvar(sala);
+            sala.setId(id);
+            limparCampos();
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
