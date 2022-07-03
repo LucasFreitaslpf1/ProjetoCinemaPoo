@@ -111,6 +111,11 @@ public class Principal extends javax.swing.JFrame {
         mnuCadastros.add(mnuCadastrosGuiche);
 
         mnuCadastrosFilme.setText("Filme");
+        mnuCadastrosFilme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrosFilmeActionPerformed(evt);
+            }
+        });
         mnuCadastros.add(mnuCadastrosFilme);
 
         mnuCadastrosSala.setText("Sala");
@@ -122,6 +127,11 @@ public class Principal extends javax.swing.JFrame {
         mnuCadastros.add(mnuCadastrosSala);
 
         mnuCadastrosGenero.setText("Genero");
+        mnuCadastrosGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrosGeneroActionPerformed(evt);
+            }
+        });
         mnuCadastros.add(mnuCadastrosGenero);
 
         jMenuItem2.setText("Sessao");
@@ -176,6 +186,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         CadastroGuiche.getInstancia().setVisible(true);
     }//GEN-LAST:event_mnuCadastrosGuicheActionPerformed
+
+    private void mnuCadastrosGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosGeneroActionPerformed
+        CadastroGenero.getInstance().setVisible(true);
+    }//GEN-LAST:event_mnuCadastrosGeneroActionPerformed
+
+    private void mnuCadastrosFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosFilmeActionPerformed
+        CadastroFilme.getInstance().setVisible(true);
+    }//GEN-LAST:event_mnuCadastrosFilmeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

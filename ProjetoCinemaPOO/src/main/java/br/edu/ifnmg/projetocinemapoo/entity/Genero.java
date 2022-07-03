@@ -32,7 +32,7 @@ public class Genero extends Entidade{
 
     @Override
     public String toString() {
-        return "Genero{" + "nome=" + nome + '}';
+        return nome;
     }
     
 }
