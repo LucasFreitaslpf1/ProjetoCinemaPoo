@@ -1,5 +1,7 @@
 package br.edu.ifnmg.projetocinemapoo.entity;
 
+import br.edu.ifnmg.projetocinemapoo.enums.Tela;
+
 public class Sala extends Entidade {
 
     private Integer numero;

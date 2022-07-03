@@ -6,7 +6,7 @@ package br.edu.ifnmg.projetocinemapoo.gui;
 
 import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Sala;
-import br.edu.ifnmg.projetocinemapoo.entity.Tela;
+import br.edu.ifnmg.projetocinemapoo.enums.Tela;
 
 /**
  *
@@ -17,8 +17,19 @@ public class CadastroSala extends javax.swing.JFrame {
     /**
      * Creates new form CadastroSala
      */
-    public CadastroSala() {
+    private CadastroSala() {
         initComponents();
+        
+        
+    }
+    
+    private static CadastroSala cadastroSala;
+    
+    public static CadastroSala getInstancia(){
+        if(cadastroSala == null){
+            cadastroSala = new CadastroSala();
+        }
+        return cadastroSala;
     }
 
     /**
@@ -42,15 +53,24 @@ public class CadastroSala extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Salas");
         setName("frmCadastroSala"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(378, 194));
         setResizable(false);
 
+        lblNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNumero.setText("Número:");
 
+        txtNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        lblCapacidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCapacidade.setText("Capacidade:");
 
+        txtCapacidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        lblTela.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTela.setText("Tela:");
 
+        txtTela.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        btnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +83,7 @@ public class CadastroSala extends javax.swing.JFrame {
         pnlCadastroSalaLayout.setHorizontalGroup(
             pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCadastroSalaLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnSalvar)
                     .addGroup(pnlCadastroSalaLayout.createSequentialGroup()
@@ -79,14 +99,14 @@ public class CadastroSala extends javax.swing.JFrame {
                         .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTela, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCapacidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                .addComponent(txtNumero, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtCapacidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtNumero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         pnlCadastroSalaLayout.setVerticalGroup(
             pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCadastroSalaLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumero)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -100,7 +120,7 @@ public class CadastroSala extends javax.swing.JFrame {
                     .addComponent(lblTela))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
-                .addGap(33, 33, 33))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,37 +162,6 @@ public class CadastroSala extends javax.swing.JFrame {
        txtNumero.requestFocus();
      
      }
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroSala.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroSala().setVisible(true);
-            }
-        });
-    }
     
      
 

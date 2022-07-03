@@ -56,6 +56,7 @@ public class Principal extends javax.swing.JFrame {
         mnuCadastrosFilme = new javax.swing.JMenuItem();
         mnuCadastrosSala = new javax.swing.JMenuItem();
         mnuCadastrosGenero = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuRelatorios = new javax.swing.JMenu();
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
@@ -123,6 +124,9 @@ public class Principal extends javax.swing.JFrame {
         mnuCadastrosGenero.setText("Genero");
         mnuCadastros.add(mnuCadastrosGenero);
 
+        jMenuItem2.setText("Sessao");
+        mnuCadastros.add(jMenuItem2);
+
         jMenuBar1.add(mnuCadastros);
 
         jMenu2.setText("Venda");
@@ -154,7 +158,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void mnuCadastrosSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosSalaActionPerformed
         // TODO add your handling code here:
-
+        CadastroSala.getInstancia().setVisible(true);
     }//GEN-LAST:event_mnuCadastrosSalaActionPerformed
 
     private void mnuCadastrosFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosFuncionarioActionPerformed
@@ -179,6 +183,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu mnuArquivo;
     private javax.swing.JMenuItem mnuArquivoSair;

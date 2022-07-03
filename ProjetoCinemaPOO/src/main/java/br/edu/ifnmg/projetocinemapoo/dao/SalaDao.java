@@ -1,7 +1,7 @@
 package br.edu.ifnmg.projetocinemapoo.dao;
 
 import br.edu.ifnmg.projetocinemapoo.entity.Sala;
-import br.edu.ifnmg.projetocinemapoo.entity.Tela;
+import br.edu.ifnmg.projetocinemapoo.enums.Tela;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
