@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Venda extends Entidade {
 
-    private Long codigoVenda;
     private Short quantidade;
     private Guiche guiche;
     private Sessao sessao;
@@ -26,14 +25,6 @@ public class Venda extends Entidade {
 
     //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    public Long getCodigoVenda() {
-        return codigoVenda;
-    }
-
-    public void setCodigoVenda(Long codigoVenda) {
-        this.codigoVenda = codigoVenda;
-    }
-
     public Short getQuantidade() {
         return quantidade;
     }
@@ -78,7 +69,7 @@ public class Venda extends Entidade {
 
     @Override
     public String toString() {
-        return "Venda{" + "codigoVenda=" + codigoVenda + ", quantidade=" + quantidade + ", guiche=" + guiche + ", sessao=" + sessao + ", ingressos=" + ingressos + ", valorTotal=" + valorTotal + '}';
+        return "Venda{" + "quantidade=" + quantidade + ", guiche=" + guiche + ", sessao=" + sessao + ", ingressos=" + ingressos + ", valorTotal=" + valorTotal + '}';
     }
 
 }

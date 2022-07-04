@@ -16,10 +16,13 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    private Funcionario funcionario;
+    
     private Principal(Funcionario f) {
         initComponents();
-
-        if (f.getTipoFuncionario() != TipoFuncionario.GERENTE) {
+        funcionario = f;
+        if (funcionario.getTipoFuncionario() != TipoFuncionario.GERENTE) {
             mnuRelatorios.setEnabled(false);
             mnuCadastrosFuncionario.setEnabled(false);
             mnuCadastrosGuiche.setEnabled(false);
@@ -57,7 +60,8 @@ public class Principal extends javax.swing.JFrame {
         mnuCadastrosSala = new javax.swing.JMenuItem();
         mnuCadastrosGenero = new javax.swing.JMenuItem();
         mnuCadastrosSessao = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mnuVenda = new javax.swing.JMenu();
+        mnuVendaNova = new javax.swing.JMenuItem();
         mnuRelatorios = new javax.swing.JMenu();
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
 
@@ -144,8 +148,22 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnuCadastros);
 
-        jMenu2.setText("Venda");
-        jMenuBar1.add(jMenu2);
+        mnuVenda.setText("Venda");
+        mnuVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVendaActionPerformed(evt);
+            }
+        });
+
+        mnuVendaNova.setText("Nova");
+        mnuVendaNova.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVendaNovaActionPerformed(evt);
+            }
+        });
+        mnuVenda.add(mnuVendaNova);
+
+        jMenuBar1.add(mnuVenda);
 
         mnuRelatorios.setText("Relatorios");
 
@@ -205,10 +223,18 @@ public class Principal extends javax.swing.JFrame {
         CadastroSessao.getInstancia().setVisible(true);
     }//GEN-LAST:event_mnuCadastrosSessaoActionPerformed
 
+    private void mnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuVendaActionPerformed
+
+    private void mnuVendaNovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaNovaActionPerformed
+        // TODO add your handling code here:
+        CadastroVenda.getInstancia(funcionario).setVisible(true);
+    }//GEN-LAST:event_mnuVendaNovaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
@@ -223,5 +249,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastrosSessao;
     private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
+    private javax.swing.JMenu mnuVenda;
+    private javax.swing.JMenuItem mnuVendaNova;
     // End of variables declaration//GEN-END:variables
 }

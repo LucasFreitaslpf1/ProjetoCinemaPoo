@@ -136,16 +136,15 @@ public class CadastroSessao extends javax.swing.JFrame {
                         .addComponent(cmbFilme, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(hmcHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(dtcHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtPreco)
-                        .addComponent(cmbSala, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(rdbDublado)
-                            .addGap(96, 96, 96)
-                            .addComponent(rdbLegendado)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(btnSalvar)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnSalvar)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtPreco)
+                            .addComponent(cmbSala, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(rdbDublado)
+                                .addGap(96, 96, 96)
+                                .addComponent(rdbLegendado)))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -205,7 +204,6 @@ public class CadastroSessao extends javax.swing.JFrame {
         Sessao s = new Sessao();
         s.setFilme((Filme) cmbFilme.getSelectedItem());
         s.setHorario(converterParaLocalDateTime(dtcHorario.getDate(), dtcHorario, hmcHorario.getTime()));
-
         s.setSala((Sala) cmbSala.getSelectedItem());
         if (rdbDublado.isSelected()) {
             s.setAudio(Audio.DUBLADO);
@@ -233,7 +231,6 @@ public class CadastroSessao extends javax.swing.JFrame {
             return LocalDateTime.now();
         }
         LocalDate ld = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
         return LocalDateTime.parse(ld.toString() + "T"
                 + LocalTime.parse(tempo, DateTimeFormatter.ofPattern("hh:mm a")));
     }

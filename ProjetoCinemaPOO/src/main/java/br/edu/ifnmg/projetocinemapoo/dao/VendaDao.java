@@ -21,22 +21,21 @@ public class VendaDao extends Dao<Venda, Long> {
 
     @Override
     public String obterSentencaInsert() {
-        return "insert into venda (id, codigovenda, quantidade, guiche_id, sessao_id, valortotal) values (default, ?, ?, ?, ?, ?); ";
+        return "insert into venda (id, quantidade, guiche_id, sessao_id, valortotal) values (default, ?, ?, ?, ?); ";
     }
 
     @Override
     public String obterSentencaUpdate() {
-        return "update venda set codigovenda = ?, quantidade = ?, guiche_id = ?, sessao_id = ?, valortotal = ? where id = ?;";
+        return "update venda set quantidade = ?, guiche_id = ?, sessao_id = ?, valortotal = ? where id = ?;";
     }
 
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Venda e) {
         try {
-            pstmt.setLong(1, e.getCodigoVenda());
-            pstmt.setShort(2, e.getQuantidade());
-            pstmt.setLong(3, e.getGuiche().getId());
-            pstmt.setLong(4, e.getSessao().getId());
-            pstmt.setDouble(5, e.getValorTotal());
+            pstmt.setShort(1, e.getQuantidade());
+            pstmt.setLong(2, e.getGuiche().getId());
+            pstmt.setLong(3, e.getSessao().getId());
+            pstmt.setDouble(4, e.getValorTotal());
 
             if (e.getId() != null && e.getId() != 0) {
                 pstmt.setLong(6, e.getId());
@@ -58,7 +57,6 @@ public class VendaDao extends Dao<Venda, Long> {
 
         try {
             v.setId(resultSet.getLong("id"));
-            v.setCodigoVenda(resultSet.getLong("codigovenda"));
             v.setQuantidade(resultSet.getShort("quantidade"));
             
             Long guicheId = resultSet.getLong("guiche_id");
@@ -80,7 +78,7 @@ public class VendaDao extends Dao<Venda, Long> {
 
     @Override
     public String obterSentencaLocalizarTodos() {
-        return "select id, codigovenda, quantidade, guiche_id, sessao_id, valortotal from venda;";
+        return "select id, quantidade, guiche_id, sessao_id, valortotal from venda;";
     }
 
     @Override

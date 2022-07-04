@@ -12,8 +12,6 @@ public class Sessao extends Entidade {
     private Filme filme;
     private Sala sala;
 
-
-
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     public Sessao() {
     }
@@ -78,13 +76,12 @@ public class Sessao extends Entidade {
     }
 
 //</editor-fold>
-    
-    public void vendeuIngressos(Integer qtd){
+    public void vendeuIngressos(Integer qtd) {
         ingressosVendidos += qtd;
     }
-    
+
     @Override
     public String toString() {
-        return "Sessao{" + "filme=" + filme + ", horario=" + horario + ", sala=" + sala + ", audio=" + audio + ", ingressosVendidos=" + ingressosVendidos + ", valorSessao=" + valorSessao + '}';
+        return filme.getNome() + " " + audio.getDescription() + sala.getTela().getDescription();
     }
 }
