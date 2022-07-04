@@ -49,7 +49,7 @@ public class Sala extends Entidade {
 
     @Override
     public String toString() {
-        return "Sala{" + "numero=" + numero + ", capacidade=" + capacidade + ", tela=" + tela + '}';
+        return "Sala " + numero;
     }
 
   

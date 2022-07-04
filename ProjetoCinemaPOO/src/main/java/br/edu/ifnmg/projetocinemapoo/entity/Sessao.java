@@ -78,6 +78,11 @@ public class Sessao extends Entidade {
     }
 
 //</editor-fold>
+    
+    public void vendeuIngressos(Integer qtd){
+        ingressosVendidos += qtd;
+    }
+    
     @Override
     public String toString() {
         return "Sessao{" + "filme=" + filme + ", horario=" + horario + ", sala=" + sala + ", audio=" + audio + ", ingressosVendidos=" + ingressosVendidos + ", valorSessao=" + valorSessao + '}';

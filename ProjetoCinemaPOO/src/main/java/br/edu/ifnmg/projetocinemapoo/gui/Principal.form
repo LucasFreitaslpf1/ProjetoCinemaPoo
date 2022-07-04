@@ -78,10 +78,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuCadastrosGeneroActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuCadastrosSessao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sessao"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuCadastrosSessaoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

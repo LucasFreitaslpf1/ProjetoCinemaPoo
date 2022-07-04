@@ -29,7 +29,7 @@ public class IngressoDao extends Dao<Ingresso, Long> {
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Ingresso e) {
         try {
-            pstmt.setBoolean(1, e.getMeiaEntada());
+            pstmt.setBoolean(1, e.getMeiaEntrada());
             pstmt.setDouble(2, e.getPreco());
             pstmt.setLong(3, e.getVendaId());
 
@@ -53,7 +53,7 @@ public class IngressoDao extends Dao<Ingresso, Long> {
 
         try {
             i.setId(resultSet.getLong("id"));
-            i.setMeiaEntada(resultSet.getBoolean("meiaentrada"));
+            i.setMeiaEntrada(resultSet.getBoolean("meiaentrada"));
             i.setPreco(resultSet.getDouble("preco"));
             i.setVendaId(resultSet.getLong("venda_id"));
 

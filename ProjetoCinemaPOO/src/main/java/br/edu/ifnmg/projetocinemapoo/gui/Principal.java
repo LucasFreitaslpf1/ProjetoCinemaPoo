@@ -56,7 +56,7 @@ public class Principal extends javax.swing.JFrame {
         mnuCadastrosFilme = new javax.swing.JMenuItem();
         mnuCadastrosSala = new javax.swing.JMenuItem();
         mnuCadastrosGenero = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuCadastrosSessao = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuRelatorios = new javax.swing.JMenu();
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
@@ -134,8 +134,13 @@ public class Principal extends javax.swing.JFrame {
         });
         mnuCadastros.add(mnuCadastrosGenero);
 
-        jMenuItem2.setText("Sessao");
-        mnuCadastros.add(jMenuItem2);
+        mnuCadastrosSessao.setText("Sessao");
+        mnuCadastrosSessao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrosSessaoActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mnuCadastrosSessao);
 
         jMenuBar1.add(mnuCadastros);
 
@@ -195,13 +200,17 @@ public class Principal extends javax.swing.JFrame {
         CadastroFilme.getInstance().setVisible(true);
     }//GEN-LAST:event_mnuCadastrosFilmeActionPerformed
 
+    private void mnuCadastrosSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosSessaoActionPerformed
+        // TODO add your handling code here:
+        CadastroSessao.getInstancia().setVisible(true);
+    }//GEN-LAST:event_mnuCadastrosSessaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu mnuArquivo;
     private javax.swing.JMenuItem mnuArquivoSair;
@@ -211,6 +220,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastrosGenero;
     private javax.swing.JMenuItem mnuCadastrosGuiche;
     private javax.swing.JMenuItem mnuCadastrosSala;
+    private javax.swing.JMenuItem mnuCadastrosSessao;
     private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
     // End of variables declaration//GEN-END:variables

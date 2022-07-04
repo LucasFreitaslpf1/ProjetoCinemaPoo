@@ -78,7 +78,7 @@ public class Venda extends Entidade {
 
     @Override
     public String toString() {
-        return "Venda{" + "codigoVenda=" + codigoVenda + ", quantidade=" + quantidade + ", valorTotal=" + valorTotal + '}';
+        return "Venda{" + "codigoVenda=" + codigoVenda + ", quantidade=" + quantidade + ", guiche=" + guiche + ", sessao=" + sessao + ", ingressos=" + ingressos + ", valorTotal=" + valorTotal + '}';
     }
 
 }

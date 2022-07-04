@@ -24,26 +24,22 @@ public class CadastroFilme extends javax.swing.JFrame {
      */
     private static CadastroFilme instance;
     private List<Genero> todosGeneros;
-    
+
     public CadastroFilme() {
         initComponents();
-        
-        todosGeneros = new GeneroDao().localizarTodos();
-        DefaultComboBoxModel<Genero> comboBoxModel = new DefaultComboBoxModel<>();
-        cboGenero.setModel(comboBoxModel);
-        comboBoxModel.addAll(todosGeneros);
+        atualizarGeneros();
     }
-    
-    public static CadastroFilme getInstance(){
-        if(instance == null){
+
+    public static CadastroFilme getInstance() {
+        if (instance == null) {
             instance = new CadastroFilme();
         }
         return instance;
     }
-    
+
     private void limparCampos() {
         txtNome.setText(null);
-        cboDuracao.getModel().setSelectedItem(null);
+        txtDuracao.setText(null);
         cboClassificacao.getModel().setSelectedItem(null);
         cboGenero.getModel().setSelectedItem(null);
     }
@@ -66,7 +62,7 @@ public class CadastroFilme extends javax.swing.JFrame {
         cboGenero = new javax.swing.JComboBox<>();
         cboClassificacao = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
-        cboDuracao = new javax.swing.JComboBox<>();
+        txtDuracao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Filme");
@@ -90,7 +86,11 @@ public class CadastroFilme extends javax.swing.JFrame {
 
         cboClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cboClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIVRE", "_10", "_12", "_14", "_16", "_18" }));
-        cboClassificacao.setSelectedIndex(-1);
+        cboClassificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboClassificacaoActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSalvar.setText("Salvar");
@@ -100,9 +100,7 @@ public class CadastroFilme extends javax.swing.JFrame {
             }
         });
 
-        cboDuracao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cboDuracao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        cboDuracao.setSelectedIndex(-1);
+        txtDuracao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,12 +116,11 @@ public class CadastroFilme extends javax.swing.JFrame {
                             .addComponent(lblClassificacao)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNome)
-                                .addComponent(cboClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cboGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cboDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome)
+                            .addComponent(cboClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboGenero, 0, 255, Short.MAX_VALUE)
+                            .addComponent(txtDuracao)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(178, 178, 178)
                         .addComponent(btnSalvar)))
@@ -136,10 +133,10 @@ public class CadastroFilme extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDuracao)
-                    .addComponent(cboDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassificacao)
@@ -166,7 +163,7 @@ public class CadastroFilme extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -176,61 +173,45 @@ public class CadastroFilme extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Filme filme = new Filme();
-        
+
         filme.setNome(txtNome.getText());
-        filme.setDuracao(Integer.parseInt((String)cboDuracao.getSelectedItem()));
-        filme.setClassificacao(Classificacao.valueOf((String)cboClassificacao.getSelectedItem()));
-        filme.setGeneroPrincipal((Genero)cboGenero.getSelectedItem());
-        
+        filme.setDuracao(Integer.parseInt(txtDuracao.getText()));
+        filme.setClassificacao(Classificacao.valueOf((String) cboClassificacao.getSelectedItem()));
+        filme.setGeneroPrincipal((Genero) cboGenero.getSelectedItem());
+
         new FilmeDao().salvar(filme);
         limparCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilme.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void cboClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboClassificacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboClassificacaoActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroFilme().setVisible(true);
-            }
-        });
+    private void atualizarGeneros() {
+        todosGeneros = new GeneroDao().localizarTodos();
+        DefaultComboBoxModel<Genero> comboBoxModel = new DefaultComboBoxModel<>();
+        cboGenero.setModel(comboBoxModel);
+        comboBoxModel.addAll(todosGeneros);
     }
+
+    @Override
+    public void setVisible(boolean b) {
+        atualizarGeneros();
+        super.setVisible(b); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cboClassificacao;
-    private javax.swing.JComboBox<String> cboDuracao;
     private javax.swing.JComboBox<Genero> cboGenero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblClassificacao;
     private javax.swing.JLabel lblDuracao;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JTextField txtDuracao;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
