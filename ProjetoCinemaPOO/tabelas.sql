@@ -55,7 +55,6 @@ primary key(id)
 
 create table venda(
   id serial,
-  codigovenda bigint(20) not null,
   quantidade smallint,
   guiche_id bigint unsigned,
   sessao_id bigint unsigned,
