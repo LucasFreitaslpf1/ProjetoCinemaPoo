@@ -4,8 +4,18 @@
  */
 package br.edu.ifnmg.projetocinemapoo.gui;
 
+import br.edu.ifnmg.projetocinemapoo.dao.ConexaoBd;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
 import br.edu.ifnmg.projetocinemapoo.enums.TipoFuncionario;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -243,7 +253,28 @@ public class Principal extends javax.swing.JFrame {
 
     private void mnuRelatoriosSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosSalasActionPerformed
         // TODO add your handling code here:
-        RelatorioSala.getInstancia().setVisible(true);
+        try(InputStream in = getClass().getResourceAsStream("/RelatorioSalas.jasper")){
+        
+         JasperPrint jasperPrint = JasperFillManager.fillReport(in, null, ConexaoBd.getConexao());
+         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+         
+//         jasperViewer.setTitle("Relatório de Salas");
+//         jasperViewer.setVisible(true);
+        
+         
+         JDialog dialog = new JDialog(this);
+         dialog.setContentPane(jasperViewer.getContentPane());
+         dialog.setSize(jasperViewer.getSize());
+         dialog.setTitle("Relatório de Salas");
+         dialog.setModal(true);
+         dialog.setVisible(true);
+        
+        
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_mnuRelatoriosSalasActionPerformed
 
 
