@@ -64,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         mnuVendaNova = new javax.swing.JMenuItem();
         mnuRelatorios = new javax.swing.JMenu();
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
+        mnuRelatoriosSalas = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -170,6 +171,14 @@ public class Principal extends javax.swing.JFrame {
         mnuRelatoriosFuncionarios.setText("Funcionarios");
         mnuRelatorios.add(mnuRelatoriosFuncionarios);
 
+        mnuRelatoriosSalas.setText("Salas");
+        mnuRelatoriosSalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRelatoriosSalasActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(mnuRelatoriosSalas);
+
         jMenuBar1.add(mnuRelatorios);
 
         setJMenuBar(jMenuBar1);
@@ -232,6 +241,11 @@ public class Principal extends javax.swing.JFrame {
         CadastroVenda.getInstancia(funcionario).setVisible(true);
     }//GEN-LAST:event_mnuVendaNovaActionPerformed
 
+    private void mnuRelatoriosSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosSalasActionPerformed
+        // TODO add your handling code here:
+        RelatorioSala.getInstancia().setVisible(true);
+    }//GEN-LAST:event_mnuRelatoriosSalasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
@@ -249,6 +263,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastrosSessao;
     private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
+    private javax.swing.JMenuItem mnuRelatoriosSalas;
     private javax.swing.JMenu mnuVenda;
     private javax.swing.JMenuItem mnuVendaNova;
     // End of variables declaration//GEN-END:variables
