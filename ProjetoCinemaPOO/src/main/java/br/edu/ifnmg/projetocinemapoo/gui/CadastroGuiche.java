@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas
  */
-public class CadastroGuiche extends javax.swing.JFrame {
+public class CadastroGuiche extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroGuiche
@@ -21,7 +21,7 @@ public class CadastroGuiche extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static CadastroGuiche cadastroGuiche;
+    private static CadastroGuiche cadastroGuiche;
 
     public static CadastroGuiche getInstancia() {
         if (cadastroGuiche == null) {
@@ -47,6 +47,7 @@ public class CadastroGuiche extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de guiches");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         lblNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -110,9 +111,6 @@ public class CadastroGuiche extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
@@ -124,9 +122,9 @@ public class CadastroGuiche extends javax.swing.JFrame {
         Guiche g = new Guiche();
         g.setNumero(Integer.parseInt(txtNumero.getText()));
         Guiche g2 = new GuicheDao().localizarPorNumero(g.getNumero());
-        if(g2 != null){
-            JOptionPane.showMessageDialog(null, "Guiche já cadastrado");            
-        } else{
+        if (g2 != null) {
+            JOptionPane.showMessageDialog(null, "Guiche já cadastrado");
+        } else {
             new GuicheDao().salvar(g);
             limparCampos();
         }
@@ -134,12 +132,6 @@ public class CadastroGuiche extends javax.swing.JFrame {
 
     public void limparCampos() {
         txtNumero.setText("");
-    }
-
-    @Override
-    public void setVisible(boolean b) {
-        limparCampos();
-        super.setVisible(b); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
     /**

@@ -205,14 +205,7 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         bgpGerenteCaixa.clearSelection();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    @Override
-    public void setVisible(boolean b) {
-        limparCampos();
-        super.setVisible(b);
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgpGerenteCaixa;

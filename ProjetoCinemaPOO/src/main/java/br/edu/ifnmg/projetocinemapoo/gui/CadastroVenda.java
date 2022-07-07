@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas
  */
-public class CadastroVenda extends javax.swing.JFrame {
+public class CadastroVenda extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Venda
@@ -303,9 +303,6 @@ public class CadastroVenda extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private List<Ingresso> ingressos = new ArrayList<>();
     private void btnAdicionarIngressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarIngressoActionPerformed
@@ -416,7 +413,7 @@ public class CadastroVenda extends javax.swing.JFrame {
         txtPrecoTotal.setText(total.toString());
     }
 
-    private void atualizarComboBox() {
+    protected void atualizarComboBox() {
         DefaultComboBoxModel<Sessao> ComboBoxS = new DefaultComboBoxModel<>();
         List<Sessao> sessoes = new SessaoDao().localizarTodos();
         ComboBoxS.addAll(sessoes);
@@ -428,7 +425,7 @@ public class CadastroVenda extends javax.swing.JFrame {
         cmbGuiche.setModel(ComboBoxG);
     }
 
-    private void limparCampos() {
+    protected void limparCampos() {
         cmbGuiche.setSelectedIndex(-1);
         cmbSessao.setSelectedIndex(-1);
         chkMeiaEntrada.setSelected(false);
@@ -441,12 +438,6 @@ public class CadastroVenda extends javax.swing.JFrame {
         txtPreco.setText(null);
         txtPrecoTotal.setText(null);
         txtSala.setText(null);
-    }
-
-    @Override
-    public void setVisible(boolean b) {
-        atualizarComboBox();
-        super.setVisible(b); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
 

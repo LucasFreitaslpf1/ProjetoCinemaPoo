@@ -25,7 +25,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Lucas
  */
-public class CadastroSessao extends javax.swing.JFrame {
+public class CadastroSessao extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroSessa
@@ -194,9 +194,6 @@ public class CadastroSessao extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -235,7 +232,7 @@ public class CadastroSessao extends javax.swing.JFrame {
                 + LocalTime.parse(tempo, DateTimeFormatter.ofPattern("hh:mm a")));
     }
 
-    private void limparCampos() {
+    protected void limparCampos() {
         cmbFilme.setSelectedIndex(-1);
         cmbSala.setSelectedIndex(-1);
         txtPreco.setText("");
@@ -244,7 +241,7 @@ public class CadastroSessao extends javax.swing.JFrame {
         rdbDublado.setSelected(true);
     }
 
-    private void atualizarComboBox() {
+    protected void atualizarComboBox() {
         // Definição do model do Filme
         DefaultComboBoxModel<Filme> ComboBoxModelF = new DefaultComboBoxModel<>();
         List<Filme> filmes = new FilmeDao().localizarTodos();
@@ -257,13 +254,6 @@ public class CadastroSessao extends javax.swing.JFrame {
         ComboBoxModelS.addAll(salas);
         cmbSala.setModel(ComboBoxModelS);
     }
-
-    @Override
-    public void setVisible(boolean b) {
-        atualizarComboBox();
-        super.setVisible(b); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
-       
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

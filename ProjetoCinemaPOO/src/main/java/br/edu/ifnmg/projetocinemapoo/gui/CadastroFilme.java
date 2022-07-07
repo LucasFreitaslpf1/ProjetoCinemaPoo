@@ -17,7 +17,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Thiago Riquelmo
  */
-public class CadastroFilme extends javax.swing.JFrame {
+public class CadastroFilme extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroFilme
@@ -37,7 +37,7 @@ public class CadastroFilme extends javax.swing.JFrame {
         return instance;
     }
 
-    private void limparCampos() {
+    protected void limparCampos() {
         txtNome.setText(null);
         txtDuracao.setText(null);
         cboClassificacao.getModel().setSelectedItem(null);
@@ -166,9 +166,6 @@ public class CadastroFilme extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -187,19 +184,12 @@ public class CadastroFilme extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboClassificacaoActionPerformed
 
-    private void atualizarGeneros() {
+    protected void atualizarGeneros() {
         todosGeneros = new GeneroDao().localizarTodos();
         DefaultComboBoxModel<Genero> comboBoxModel = new DefaultComboBoxModel<>();
         cboGenero.setModel(comboBoxModel);
         comboBoxModel.addAll(todosGeneros);
-    }
-
-    @Override
-    public void setVisible(boolean b) {
-        atualizarGeneros();
-        super.setVisible(b); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
-
+    }    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
