@@ -13,7 +13,7 @@ primary key(id)
 create table guiche(
 id serial,
 numero tinyint not null unique,
-primary key(id),
+primary key(id)
 ) engine = innodb;
 
 create table genero(
