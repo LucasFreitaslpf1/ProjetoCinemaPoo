@@ -13,9 +13,7 @@ primary key(id)
 create table guiche(
 id serial,
 numero tinyint not null unique,
-funcionario_id bigint unsigned references funcionario(id),
 primary key(id),
-foreign key(funcionario_id) references funcionario(id)
 ) engine = innodb;
 
 create table genero(
@@ -60,8 +58,10 @@ create table venda(
   sessao_id bigint unsigned,
   valortotal float,
   primary key(id),
+  funcionario_id bigint unsigned references funcionario(id),
   foreign key(guiche_id) references guiche(id),
-  foreign key(sessao_id) references sessao(id)
+  foreign key(sessao_id) references sessao(id),
+  foreign key(funcionario_id) references funcionario(id)
 )engine=InnoDB;
 
 
