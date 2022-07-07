@@ -47,7 +47,7 @@ public class ProjetoCinemaPOO {
 //        FuncionarioDao funcionarioDao1 = new FuncionarioDao();
 //        Long funcionarioId1 = funcionarioDao1.salvar(funcionario1);
 //        funcionario1.setId(funcionarioId1);
-
+//
 //        Funcionario funcionario2 = new Funcionario();
 //        funcionario2.setNome("Jorge Augusto");
 //        funcionario2.setSenha("456");
@@ -59,7 +59,6 @@ public class ProjetoCinemaPOO {
 //
 //        Guiche guiche1 = new Guiche();
 //        guiche1.setNumero(1);
-//        guiche1.setFuncionario(funcionario1);
 //
 //        GuicheDao guicheDao1 = new GuicheDao();
 //        Long guicheId1 = guicheDao1.salvar(guiche1);
@@ -67,7 +66,6 @@ public class ProjetoCinemaPOO {
 //
 //        Guiche guiche2 = new Guiche();
 //        guiche2.setNumero(2);
-//        guiche2.setFuncionario(funcionario2);
 //
 //        GuicheDao guicheDao2 = new GuicheDao();
 //        Long guicheId2 = guicheDao2.salvar(guiche2);
@@ -183,6 +181,7 @@ public class ProjetoCinemaPOO {
 //        venda1.setGuiche(guiche1);
 //        venda1.setSessao(sessao1);
 //        venda1.setValorTotal(111.0);
+//        venda1.setFuncionario(funcionario1);
 //
 //        VendaDao vendaDao1 = new VendaDao();
 //        Long vendaId1 = vendaDao1.salvar(venda1);
@@ -222,6 +221,8 @@ public class ProjetoCinemaPOO {
 //        venda2.setGuiche(guiche2);
 //        venda2.setSessao(sessao2);
 //        venda2.setValorTotal(222.0);
+//        venda2.setFuncionario(funcionario2);
+//        
 //
 //        VendaDao vendaDao2 = new VendaDao();
 //        Long vendaId2 = vendaDao2.salvar(venda2);
