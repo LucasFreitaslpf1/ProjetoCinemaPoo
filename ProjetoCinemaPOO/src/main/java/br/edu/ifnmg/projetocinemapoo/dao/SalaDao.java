@@ -69,17 +69,15 @@ public class SalaDao extends Dao<Sala, Long> {
     }
 
     @Override
-    public List<Sala> extrairObjetos(ResultSet rs) {
+     public List<Sala> extrairObjetos(ResultSet rs) {
 
-        ArrayList<Sala> salas = new ArrayList<>();
+        ArrayList<Sala> salas = new ArrayList<>();  
 
         try {
-
-            while (rs.next()) {
-
+            do{
                 salas.add(extrairObjeto(rs));
-            }
-
+            } while (rs.next());
+            
         } catch (SQLException ex) {
             Logger.getLogger(SalaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
