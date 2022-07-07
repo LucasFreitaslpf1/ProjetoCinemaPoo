@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package br.edu.ifnmg.projetocinemapoo.gui;
 
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author dayan
  */
-public class CadastroSala extends javax.swing.JFrame {
+public class CadastroSala extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroSala
@@ -52,10 +52,9 @@ public class CadastroSala extends javax.swing.JFrame {
         rdb3D = new javax.swing.JRadioButton();
         rdb2D = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Salas");
-        setName("frmCadastroSala"); // NOI18N
-        setResizable(false);
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Cadastro Sala");
 
         lblNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNumero.setText("Número:");
@@ -114,12 +113,12 @@ public class CadastroSala extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadastroSalaLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlCadastroSalaLayout.createSequentialGroup()
-                                .addGap(51, 51, 51)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadastroSalaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(rdb3D)
                                 .addGap(28, 28, 28)
                                 .addComponent(rdb2D)
-                                .addContainerGap())))))
+                                .addGap(45, 45, 45))))))
         );
         pnlCadastroSalaLayout.setVerticalGroup(
             pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,8 +134,9 @@ public class CadastroSala extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTela)
-                    .addComponent(rdb3D)
-                    .addComponent(rdb2D))
+                    .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rdb3D)
+                        .addComponent(rdb2D)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar))
         );
@@ -146,38 +146,35 @@ public class CadastroSala extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(pnlCadastroSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(0, 18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlCadastroSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Sala sala = new Sala();
         sala.setNumero(Integer.parseInt(txtNumero.getText()));
         sala.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
-        
+
         if(rdb2D.isSelected()){
             sala.setTela(Tela._2D);
         } else{
             sala.setTela(Tela._3D);
         }
-        
-         Sala s = new SalaDao().localizarPorNumero(sala.getNumero());
+
+        Sala s = new SalaDao().localizarPorNumero(sala.getNumero());
         if(s != null){
-            JOptionPane.showMessageDialog(null, "Sala já cadastrada");            
+            JOptionPane.showMessageDialog(null, "Sala já cadastrada");
         } else{
-            
+
             Long id = new SalaDao().salvar(sala);
             sala.setId(id);
             limparCampos();
@@ -187,12 +184,8 @@ public class CadastroSala extends javax.swing.JFrame {
     private void rdb3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb3DActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdb3DActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     
-     private void limparCampos() {
+       private void limparCampos() {
      
        txtNumero.setText(null);
        txtCapacidade.setText(null);
@@ -201,8 +194,6 @@ public class CadastroSala extends javax.swing.JFrame {
        txtNumero.requestFocus();
      
      }
-    
-     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgTela;
