@@ -113,8 +113,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuRelatoriosFuncionarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Funcionarios"/>
+                <Property name="text" type="java.lang.String" value="Funcion&#xe1;rios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuRelatoriosFuncionariosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuRelatoriosSalas">
               <Properties>
@@ -122,6 +125,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuRelatoriosSalasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuRelatoriosGuiches">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guich&#xea;s"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuRelatoriosGuichesActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

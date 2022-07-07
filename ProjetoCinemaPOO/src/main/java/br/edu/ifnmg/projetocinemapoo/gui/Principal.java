@@ -93,6 +93,7 @@ public class Principal extends javax.swing.JFrame {
         mnuRelatorios = new javax.swing.JMenu();
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
         mnuRelatoriosSalas = new javax.swing.JMenuItem();
+        mnuRelatoriosGuiches = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -195,7 +196,12 @@ public class Principal extends javax.swing.JFrame {
 
         mnuRelatorios.setText("Relatorios");
 
-        mnuRelatoriosFuncionarios.setText("Funcionarios");
+        mnuRelatoriosFuncionarios.setText("Funcionários");
+        mnuRelatoriosFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRelatoriosFuncionariosActionPerformed(evt);
+            }
+        });
         mnuRelatorios.add(mnuRelatoriosFuncionarios);
 
         mnuRelatoriosSalas.setText("Salas");
@@ -205,6 +211,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnuRelatorios.add(mnuRelatoriosSalas);
+
+        mnuRelatoriosGuiches.setText("Guichês");
+        mnuRelatoriosGuiches.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRelatoriosGuichesActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(mnuRelatoriosGuiches);
 
         jMenuBar1.add(mnuRelatorios);
 
@@ -293,6 +307,14 @@ public class Principal extends javax.swing.JFrame {
         chamarRelatorio("/RelatorioSalas.jasper","Relatório de Salas");
     }//GEN-LAST:event_mnuRelatoriosSalasActionPerformed
 
+    private void mnuRelatoriosFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosFuncionariosActionPerformed
+       chamarRelatorio("/RelatorioFuncionarios.jasper","Relatório de Funcionários");
+    }//GEN-LAST:event_mnuRelatoriosFuncionariosActionPerformed
+
+    private void mnuRelatoriosGuichesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosGuichesActionPerformed
+        chamarRelatorio("/RelatorioGuiches.jasper","Relatório de Guichês");
+    }//GEN-LAST:event_mnuRelatoriosGuichesActionPerformed
+
     private void chamarRelatorio(String arquivo, String titulo){
             try ( InputStream in = getClass().getResourceAsStream(arquivo)) {
 
@@ -331,6 +353,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastrosSessao;
     private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
+    private javax.swing.JMenuItem mnuRelatoriosGuiches;
     private javax.swing.JMenuItem mnuRelatoriosSalas;
     private javax.swing.JMenu mnuVenda;
     private javax.swing.JMenuItem mnuVendaNova;
