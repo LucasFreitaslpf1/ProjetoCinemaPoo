@@ -32,7 +32,7 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
      */
     private CadastroSessao() {
         initComponents();
-        atualizarComboBox();
+        
         rdbDublado.setSelected(true);
     }
     
@@ -79,6 +79,11 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
                 cmbFilmeItemStateChanged(evt);
             }
         });
+        cmbFilme.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbFilmeFocusGained(evt);
+            }
+        });
 
         lblFilme.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFilme.setText("Filme:");
@@ -89,6 +94,11 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
         hmcHorario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         cmbSala.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbSala.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbSalaFocusGained(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Sala:");
@@ -223,6 +233,16 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
     private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecoActionPerformed
+
+    private void cmbFilmeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbFilmeFocusGained
+        // TODO add your handling code here:
+        atualizarComboBox();
+    }//GEN-LAST:event_cmbFilmeFocusGained
+
+    private void cmbSalaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbSalaFocusGained
+        // TODO add your handling code here:
+        atualizarComboBox();
+    }//GEN-LAST:event_cmbSalaFocusGained
 
     private LocalDateTime converterParaLocalDateTime(Date data, JDateChooser calendario, String tempo) {
         if (data == null) {

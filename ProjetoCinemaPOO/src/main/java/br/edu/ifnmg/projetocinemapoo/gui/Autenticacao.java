@@ -5,11 +5,7 @@
 package br.edu.ifnmg.projetocinemapoo.gui;
 
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
-import br.edu.ifnmg.projetocinemapoo.dao.GuicheDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
-import br.edu.ifnmg.projetocinemapoo.entity.Guiche;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**

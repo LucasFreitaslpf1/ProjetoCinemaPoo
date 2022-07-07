@@ -13,16 +13,14 @@ import java.util.List;
 public class Guiche extends Entidade {
 
     private Integer numero;
-    private Funcionario funcionario;
     List<Venda> vendas;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Guiche() {
     }
 
-    public Guiche(Integer numero, Funcionario funcionario) {
+    public Guiche(Integer numero) {
         this.numero = numero;
-        this.funcionario = funcionario;
     }
 //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Getters Setters">
@@ -32,14 +30,6 @@ public class Guiche extends Entidade {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
     }
     //</editor-fold>
 

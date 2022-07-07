@@ -21,12 +21,14 @@ public class VendaDao extends Dao<Venda, Long> {
 
     @Override
     public String obterSentencaInsert() {
-        return "insert into venda (id, quantidade, guiche_id, sessao_id, valortotal) values (default, ?, ?, ?, ?); ";
+        return "insert into venda (id, quantidade, guiche_id, sessao_id, valortotal, funcionario_id) "
+                + "values (default, ?, ?, ?, ?,?); ";
     }
 
     @Override
     public String obterSentencaUpdate() {
-        return "update venda set quantidade = ?, guiche_id = ?, sessao_id = ?, valortotal = ? where id = ?;";
+        return "update venda set quantidade = ?, guiche_id = ?, sessao_id = ?, "
+                + "valortotal = ?, funcionario_id = ? where id = ?;";
     }
 
     @Override
@@ -36,8 +38,14 @@ public class VendaDao extends Dao<Venda, Long> {
             pstmt.setLong(2, e.getGuiche().getId());
             pstmt.setLong(3, e.getSessao().getId());
             pstmt.setDouble(4, e.getValorTotal());
+            pstmt.setLong(5, e.getFuncionario().getId());
 
             if (e.getId() != null && e.getId() != 0) {
+                pstmt.setShort(1, e.getQuantidade());
+                pstmt.setLong(2, e.getGuiche().getId());
+                pstmt.setLong(3, e.getSessao().getId());
+                pstmt.setDouble(4, e.getValorTotal());
+                pstmt.setLong(5, e.getFuncionario().getId());
                 pstmt.setLong(6, e.getId());
             }
 
@@ -48,7 +56,7 @@ public class VendaDao extends Dao<Venda, Long> {
 
     @Override
     public String obterSentencaLocalizarPorId() {
-        return "SELECT * FROM venda WHERE id = ?";
+        return "SELECT id,quantidade,guiche_id,sessao_id,valortotal,funcionario_id FROM venda WHERE id = ?";
     }
 
     @Override
@@ -58,16 +66,18 @@ public class VendaDao extends Dao<Venda, Long> {
         try {
             v.setId(resultSet.getLong("id"));
             v.setQuantidade(resultSet.getShort("quantidade"));
-            
+
             Long guicheId = resultSet.getLong("guiche_id");
             v.setGuiche(new GuicheDao().localizarPorId(guicheId));
-                    
+
             Long sessaoId = resultSet.getLong("sessao_id");
             v.setSessao(new SessaoDao().localizarPorId(sessaoId));
-            
+
             v.setValorTotal(resultSet.getDouble("valortotal"));
-            
+
             v.setIngressos(new IngressoDao().localizarIngressosPorVenda(v));
+            
+            v.setFuncionario(new FuncionarioDao().localizarPorId(resultSet.getLong("funcionario_id")));
 
         } catch (SQLException ex) {
             Logger.getLogger(VendaDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,12 +88,12 @@ public class VendaDao extends Dao<Venda, Long> {
 
     @Override
     public String obterSentencaLocalizarTodos() {
-        return "select id, quantidade, guiche_id, sessao_id, valortotal from venda;";
+        return "select id, quantidade, guiche_id, sessao_id, valortotal,funcionario_id from venda;";
     }
 
     @Override
     public List<Venda> extrairObjetos(ResultSet rs) {
-        
+
         ArrayList<Venda> v = new ArrayList<>();
 
         try {

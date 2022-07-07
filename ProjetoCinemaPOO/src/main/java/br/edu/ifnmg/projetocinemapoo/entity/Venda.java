@@ -9,6 +9,7 @@ public class Venda extends Entidade {
     private Sessao sessao;
     private List<Ingresso> ingressos;
     private Double valorTotal;
+    private Funcionario funcionario;
 
     //<editor-fold defaultstate="collapsed" desc="Construtores">
     public Venda() {
@@ -65,11 +66,20 @@ public class Venda extends Entidade {
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
-    //</editor-fold>
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    //</editor-fold>
+    
     @Override
     public String toString() {
-        return "Venda{" + "quantidade=" + quantidade + ", guiche=" + guiche + ", sessao=" + sessao + ", ingressos=" + ingressos + ", valorTotal=" + valorTotal + '}';
+        return "Venda{" + "quantidade=" + quantidade + ", guiche=" + guiche + ", sessao=" + sessao + ", ingressos=" + ingressos + ", valorTotal=" + valorTotal + ", funcionario=" + funcionario + '}';
     }
 
 }

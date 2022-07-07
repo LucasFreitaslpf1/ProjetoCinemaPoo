@@ -26,7 +26,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaUpdate() {
-        return "update guiche set numero = ?, funcionario_id = ? where id = ?;";
+        return "update guiche set numero = ? where id = ?;";
     }
 
     @Override
@@ -36,12 +36,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
                 pstmt.setInt(1, e.getNumero());
             } else {
                 pstmt.setInt(1, e.getNumero());
-                if (e.getFuncionario().getId() == 0 || e.getFuncionario().getId() == null) {
-                    pstmt.setLong(2, new FuncionarioDao().salvar(e.getFuncionario()));
-                } else {
-                    pstmt.setLong(2, e.getFuncionario().getId());
-                }
-                pstmt.setLong(3, e.getId());
+                pstmt.setLong(2, e.getId());
             }
         } catch (Exception ex) {
             System.out.println("Exception: " + ex);
@@ -50,7 +45,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaLocalizarPorId() {
-        return "select id,numero,funcionario_id from guiche where id=?;";
+        return "select id,numero from guiche where id=?;";
     }
 
     @Override
@@ -58,8 +53,6 @@ public class GuicheDao extends Dao<Guiche, Long> {
         Guiche g = new Guiche();
         try {
             g.setId(resultSet.getLong("id"));
-            g.setFuncionario(new FuncionarioDao().
-                    localizarPorId(resultSet.getLong("funcionario_id")));
             g.setNumero(resultSet.getInt("numero"));
         } catch (SQLException ex) {
             Logger.getLogger(GuicheDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,7 +63,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
 
     @Override
     public String obterSentencaLocalizarTodos() {
-        return "select id,numero,funcionario_id from guiche;";
+        return "select id,numero from guiche;";
     }
 
     @Override
@@ -93,7 +86,7 @@ public class GuicheDao extends Dao<Guiche, Long> {
                 = ConexaoBd
                         .getConexao()
                         .prepareStatement(
-                                "select id,numero,funcionario_id from guiche where numero = ?")) {
+                                "select id,numero from guiche where numero = ?")) {
             
                     preparedStatement.setInt(1, numero);
                     

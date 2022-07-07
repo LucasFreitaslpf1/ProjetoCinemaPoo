@@ -27,7 +27,6 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
 
     public CadastroFilme() {
         initComponents();
-        atualizarGeneros();
     }
 
     public static CadastroFilme getInstance() {
@@ -83,6 +82,11 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         cboGenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cboGenero.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cboGeneroFocusGained(evt);
+            }
+        });
 
         cboClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cboClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIVRE", "_10", "_12", "_14", "_16", "_18" }));
@@ -186,13 +190,18 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboClassificacaoActionPerformed
 
+    private void cboGeneroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboGeneroFocusGained
+        // TODO add your handling code here:
+        atualizarGeneros();
+    }//GEN-LAST:event_cboGeneroFocusGained
+
     protected void atualizarGeneros() {
         todosGeneros = new GeneroDao().localizarTodos();
         DefaultComboBoxModel<Genero> comboBoxModel = new DefaultComboBoxModel<>();
         cboGenero.setModel(comboBoxModel);
         comboBoxModel.addAll(todosGeneros);
-    }    
-    
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;

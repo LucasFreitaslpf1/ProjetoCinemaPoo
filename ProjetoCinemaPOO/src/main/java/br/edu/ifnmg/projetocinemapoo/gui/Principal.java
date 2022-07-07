@@ -265,7 +265,6 @@ public class Principal extends javax.swing.JFrame {
         CadastroFilme janela = CadastroFilme.getInstance();
         janela.setSize(473, 330);
         janela.limparCampos();
-        janela.atualizarGeneros();
         anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosFilmeActionPerformed
 
@@ -274,7 +273,6 @@ public class Principal extends javax.swing.JFrame {
         CadastroSessao janela = CadastroSessao.getInstancia();
         janela.setSize(439, 378);
         janela.limparCampos();
-        janela.atualizarComboBox();
         anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosSessaoActionPerformed
 
@@ -287,33 +285,35 @@ public class Principal extends javax.swing.JFrame {
         CadastroVenda janela = CadastroVenda.getInstancia(funcionario);
         janela.setSize(485, 487);
         janela.limparCampos();
-        janela.atualizarComboBox();
         anexarJanela(janela);
     }//GEN-LAST:event_mnuVendaNovaActionPerformed
 
     private void mnuRelatoriosSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosSalasActionPerformed
         // TODO add your handling code here:
-        try ( InputStream in = getClass().getResourceAsStream("/RelatorioSalas.jasper")) {
+        chamarRelatorio("/RelatorioSalas.jasper","Relatório de Salas");
+    }//GEN-LAST:event_mnuRelatoriosSalasActionPerformed
+
+    private void chamarRelatorio(String arquivo, String titulo){
+            try ( InputStream in = getClass().getResourceAsStream(arquivo)) {
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(in, null, ConexaoBd.getConexao());
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
 
-//         jasperViewer.setTitle("Relatório de Salas");
-//         jasperViewer.setVisible(true);
-            JDialog dialog = new JDialog(this);
-            dialog.setContentPane(jasperViewer.getContentPane());
-            dialog.setSize(jasperViewer.getSize());
-            dialog.setTitle("Relatório de Salas");
-            dialog.setModal(true);
-            dialog.setVisible(true);
+            JInternalFrame jInternalFrame = new JInternalFrame();
+            jInternalFrame.setContentPane(jasperViewer.getContentPane());
+            jInternalFrame.setSize(jasperViewer.getSize());
+            jInternalFrame.setTitle(titulo);
+            jInternalFrame.setIconifiable(true);
+            jInternalFrame.setClosable(true);
+            anexarJanela(jInternalFrame);
 
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JRException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_mnuRelatoriosSalasActionPerformed
-
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dskPrincipal;

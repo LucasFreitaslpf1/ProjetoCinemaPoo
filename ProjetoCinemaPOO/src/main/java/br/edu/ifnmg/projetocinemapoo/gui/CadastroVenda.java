@@ -34,7 +34,6 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
         initComponents();
 
         funcionario = f;
-        atualizarComboBox();
     }
 
     private static CadastroVenda cadastroVenda;
@@ -121,6 +120,11 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
                 cmbSessaoItemStateChanged(evt);
             }
         });
+        cmbSessao.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbSessaoFocusGained(evt);
+            }
+        });
         cmbSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSessaoActionPerformed(evt);
@@ -128,6 +132,11 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
         });
 
         cmbGuiche.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbGuiche.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbGuicheFocusGained(evt);
+            }
+        });
         cmbGuiche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbGuicheActionPerformed(evt);
@@ -331,21 +340,18 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Venda v = new Venda();
         Sessao s;
-        Guiche g;
 
         // ASSOCIA FUNCIONARIO QUE FEZ A VENDA AO GUICHE E
         // INCREMENTA O NUMERO DE INGRESSOS VENDIDOS DA SESSAO
         s = (Sessao) cmbSessao.getSelectedItem();
-        g = (Guiche) cmbGuiche.getSelectedItem();
-        g.setFuncionario(funcionario);
         s.vendeuIngressos(ingressos.size());
-        new GuicheDao().salvar(g);
         new SessaoDao().salvar(s);
 
         v.setQuantidade((short) ingressos.size());
-        v.setGuiche(g);
+        v.setGuiche((Guiche) cmbGuiche.getSelectedItem());
         v.setSessao(s);
         v.setIngressos(ingressos);
+        v.setFuncionario(funcionario);
         Double total = 0.0;
         for (Ingresso ingresso : ingressos) {
             total += ingresso.getPreco();
@@ -395,6 +401,16 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
     private void cmbSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSessaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbSessaoActionPerformed
+
+    private void cmbGuicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbGuicheFocusGained
+        // TODO add your handling code here:
+        atualizarComboBox();
+    }//GEN-LAST:event_cmbGuicheFocusGained
+
+    private void cmbSessaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbSessaoFocusGained
+        // TODO add your handling code here:
+        atualizarComboBox();
+    }//GEN-LAST:event_cmbSessaoFocusGained
 
     private void controleIngressos() {
         if (ingressos.isEmpty()) {
