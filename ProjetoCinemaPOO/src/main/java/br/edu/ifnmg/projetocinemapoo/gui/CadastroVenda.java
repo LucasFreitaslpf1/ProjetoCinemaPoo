@@ -338,6 +338,11 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        if (ingressos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Adicione ingressos");
+            return;
+        }
+
         Venda v = new Venda();
         Sessao s;
 
@@ -363,6 +368,10 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
 
     private void btnRemoverUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverUltimoActionPerformed
         // TODO add your handling code here:
+        if (ingressos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sem ingressos adicionados");
+            return;
+        }
         ingressos.remove(ingressos.size() - 1);
         atualizarIngressos();
         controleIngressos();
@@ -405,6 +414,7 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
     private void cmbGuicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbGuicheFocusGained
         // TODO add your handling code here:
         atualizarComboBox();
+        limparCampos();
     }//GEN-LAST:event_cmbGuicheFocusGained
 
     private void cmbSessaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbSessaoFocusGained
