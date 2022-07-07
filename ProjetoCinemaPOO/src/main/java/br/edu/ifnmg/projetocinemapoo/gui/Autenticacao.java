@@ -5,11 +5,7 @@
 package br.edu.ifnmg.projetocinemapoo.gui;
 
 import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
-import br.edu.ifnmg.projetocinemapoo.dao.GuicheDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
-import br.edu.ifnmg.projetocinemapoo.entity.Guiche;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -128,12 +124,14 @@ public class Autenticacao extends javax.swing.JFrame {
 
     private void btnAutenticarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutenticarActionPerformed
         // TODO add your handling code here:
-        
+        if (!validarCampos()) {
+            return;
+        }
         Funcionario funcionario = new Funcionario();
         funcionario.setNome(txtNome.getText());
         funcionario.setSenha(String.valueOf(txtSenha.getPassword()));
         Funcionario retorno = new FuncionarioDao().autenticar(funcionario);
-        
+
         if (retorno == null) {
             JOptionPane.showMessageDialog(null, "Acesso negado");
         } else {
@@ -181,6 +179,27 @@ public class Autenticacao extends javax.swing.JFrame {
         });
     }
 
+    private Boolean validarCampos() {
+        String s = txtNome.getText();
+
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Nome inválido");
+            return false;
+        }
+
+        try {
+            s = String.valueOf(txtSenha.getPassword());
+            if (s == null || s.equals("")) {
+                JOptionPane.showMessageDialog(null, "Senha inválida");
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Senha inválida");
+            return false;
+        }
+
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAutenticar;
     private javax.swing.JLabel lblNome;

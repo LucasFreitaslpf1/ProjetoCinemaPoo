@@ -2,7 +2,7 @@ package br.edu.ifnmg.projetocinemapoo.entity;
 
 public class Ingresso extends Entidade {
 
-    private Boolean meiaEntada;
+    private Boolean meiaEntrada;
     private Double preco;
     private Long vendaId;
 
@@ -11,17 +11,17 @@ public class Ingresso extends Entidade {
     }
 
     public Ingresso(Boolean meiaEntada) {
-        this.meiaEntada = meiaEntada;
+        this.meiaEntrada = meiaEntada;
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
-    public Boolean getMeiaEntada() {
-        return meiaEntada;
+    public Boolean getMeiaEntrada() {
+        return meiaEntrada;
     }
 
-    public void setMeiaEntada(Boolean meiaEntada) {
-        this.meiaEntada = meiaEntada;
+    public void setMeiaEntrada(Boolean meiaEntrada) {
+        this.meiaEntrada = meiaEntrada;
     }
 
     public Double getPreco() {
@@ -31,7 +31,11 @@ public class Ingresso extends Entidade {
     /* Apenas classe venda pode colocar valor de ingresso, uma vez que
        valor do ingresso depende do valor da Sessão. */ 
     public void setPreco(Double preco) {
-        this.preco = preco;
+        if(meiaEntrada){
+            this.preco = preco/2;
+        } else{
+            this.preco = preco;
+        }
     }
 
     public Long getVendaId() {
@@ -46,7 +50,7 @@ public class Ingresso extends Entidade {
 
     @Override
     public String toString() {
-        return "Ingresso{" + "meiaEntada=" + meiaEntada + ", preco=" + preco + '}';
+        return "Ingresso{" + "meiaEntada=" + meiaEntrada + ", preco=" + preco + '}';
     }
 
 }

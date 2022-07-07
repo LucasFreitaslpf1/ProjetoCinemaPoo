@@ -13,13 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas
  */
-public class CadastroFuncionarios extends javax.swing.JFrame {
+public class CadastroFuncionarios extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroFuncionarios
      */
     private CadastroFuncionarios() {
         initComponents();
+        rdbCaixa.setSelected(true);
     }
 
     public static CadastroFuncionarios cadastroFuncionarios;
@@ -50,9 +51,9 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Cadastro de funcionário");
-        setResizable(false);
 
         lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSenha.setText("Nome:");
@@ -159,7 +160,6 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rdbCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCaixaActionPerformed
@@ -180,6 +180,9 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        if(!validarCampos()){
+            return;
+        }
         Funcionario f = new Funcionario();
         f.setNome(txtNome.getText());
         f.setSenha(txtSenha.getText());
@@ -199,20 +202,30 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    public void limparCampos() {
+    protected void limparCampos() {
         txtNome.setText("");
         txtSenha.setText("");
         bgpGerenteCaixa.clearSelection();
+        rdbCaixa.setSelected(true);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    @Override
-    public void setVisible(boolean b) {
-        limparCampos();
-        super.setVisible(b);
+    private Boolean validarCampos() {
+
+        String s = txtNome.getText();
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Nome inválido");
+            return false;
+        }
+
+        s = txtSenha.getText();
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Senha inválida");
+            return false;
+        }
+
+        return true;
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgpGerenteCaixa;
