@@ -96,6 +96,7 @@ public class Principal extends javax.swing.JFrame {
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
         mnuRelatoriosSalas = new javax.swing.JMenuItem();
         mnuRelatoriosGuiches = new javax.swing.JMenuItem();
+        mnuRelatoriosFilmes = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -222,6 +223,14 @@ public class Principal extends javax.swing.JFrame {
         });
         mnuRelatorios.add(mnuRelatoriosGuiches);
 
+        mnuRelatoriosFilmes.setText("Filmes");
+        mnuRelatoriosFilmes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRelatoriosFilmesActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(mnuRelatoriosFilmes);
+
         jMenuBar1.add(mnuRelatorios);
 
         setJMenuBar(jMenuBar1);
@@ -317,6 +326,10 @@ public class Principal extends javax.swing.JFrame {
         chamarRelatorio("/RelatorioGuiches.jasper","Relatório de Guichês");
     }//GEN-LAST:event_mnuRelatoriosGuichesActionPerformed
 
+    private void mnuRelatoriosFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosFilmesActionPerformed
+        chamarRelatorio("/RelatorioFilmes.jasper","Relatório de Filmes");
+    }//GEN-LAST:event_mnuRelatoriosFilmesActionPerformed
+
     private void chamarRelatorio(String arquivo, String titulo){
             try ( InputStream in = getClass().getResourceAsStream(arquivo)) {
 
@@ -354,6 +367,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastrosSala;
     private javax.swing.JMenuItem mnuCadastrosSessao;
     private javax.swing.JMenu mnuRelatorios;
+    private javax.swing.JMenuItem mnuRelatoriosFilmes;
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
     private javax.swing.JMenuItem mnuRelatoriosGuiches;
     private javax.swing.JMenuItem mnuRelatoriosSalas;
