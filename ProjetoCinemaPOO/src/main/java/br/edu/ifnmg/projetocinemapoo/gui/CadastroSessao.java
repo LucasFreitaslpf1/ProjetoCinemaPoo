@@ -69,9 +69,9 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
         btnSalvar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Cadastro de sessão");
-        setResizable(false);
 
         cmbFilme.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbFilme.addItemListener(new java.awt.event.ItemListener() {

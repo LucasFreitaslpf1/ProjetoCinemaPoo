@@ -78,9 +78,9 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
         txtPreco = new javax.swing.JTextField();
         txtPrecoTotal = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Cadastro de Venda");
-        setResizable(false);
 
         lblQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblQuantidade.setText("Quantidade: 0");

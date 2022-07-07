@@ -45,10 +45,10 @@ public class CadastroGuiche extends javax.swing.JInternalFrame {
         txtNumero = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Cadastro de guiches");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setResizable(false);
 
         lblNumero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNumero.setText("Número:");

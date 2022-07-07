@@ -114,7 +114,6 @@ public class CadastroSala extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadastroSalaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(rdb3D)
                                 .addGap(28, 28, 28)
                                 .addComponent(rdb2D)
@@ -132,11 +131,11 @@ public class CadastroSala extends javax.swing.JInternalFrame {
                     .addComponent(lblCapacidade)
                     .addComponent(txtCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTela)
+                .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCadastroSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rdb3D)
-                        .addComponent(rdb2D)))
+                        .addComponent(rdb2D))
+                    .addComponent(lblTela))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar))
         );
@@ -185,7 +184,7 @@ public class CadastroSala extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdb3DActionPerformed
     
-       private void limparCampos() {
+       protected void limparCampos() {
      
        txtNumero.setText(null);
        txtCapacidade.setText(null);

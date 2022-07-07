@@ -26,7 +26,7 @@ public class CadastroGenero extends javax.swing.JInternalFrame {
         return instance;
     }
     
-    private void limparCampos() {
+    protected void limparCampos() {
         txtNome.setText(null);
     }
     @SuppressWarnings("unchecked")

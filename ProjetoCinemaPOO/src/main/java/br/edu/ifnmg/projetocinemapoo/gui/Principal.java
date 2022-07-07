@@ -28,9 +28,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    
     private Funcionario funcionario;
-    
+
     private Principal(Funcionario f) {
         initComponents();
         funcionario = f;
@@ -49,18 +48,15 @@ public class Principal extends javax.swing.JFrame {
         }
         return principal;
     }
-     
-    
-      private void anexarJanela(JInternalFrame janela) {
+
+    private void anexarJanela(JInternalFrame janela) {
         if (!janela.isVisible()) {
-
             dskPrincipal.add(janela);
-
         }
 
         janela.setVisible(true);
 
-         try {
+        try {
             janela.setIcon(false);
             janela.setSelected(true);
         } catch (PropertyVetoException ex) {
@@ -69,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
 
         janela.toFront();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -231,13 +228,17 @@ public class Principal extends javax.swing.JFrame {
     private void mnuCadastrosSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosSalaActionPerformed
         // TODO add your handling code here:
         CadastroSala janela = CadastroSala.getInstancia();
+        janela.setSize(381, 227);
+        janela.limparCampos();
         anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosSalaActionPerformed
 
     private void mnuCadastrosFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosFuncionarioActionPerformed
         // TODO add your handling code here:
-        CadastroFuncionarios cf = CadastroFuncionarios.getInstancia();
-        cf.setVisible(true);
+        CadastroFuncionarios janela = CadastroFuncionarios.getInstancia();
+        janela.setSize(400, 282);
+        janela.limparCampos();
+        anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosFuncionarioActionPerformed
 
     private void mnuArquivoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivoSairActionPerformed
@@ -247,21 +248,34 @@ public class Principal extends javax.swing.JFrame {
 
     private void mnuCadastrosGuicheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosGuicheActionPerformed
         // TODO add your handling code here:
-        CadastroGuiche.getInstancia().setVisible(true);
+        CadastroGuiche janela = CadastroGuiche.getInstancia();
+        janela.setSize(376, 207);
+
+        anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosGuicheActionPerformed
 
     private void mnuCadastrosGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosGeneroActionPerformed
         CadastroGenero janela = CadastroGenero.getInstance();
+        janela.setSize(360, 185);
+        janela.limparCampos();
         anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosGeneroActionPerformed
 
     private void mnuCadastrosFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosFilmeActionPerformed
-        CadastroFilme.getInstance().setVisible(true);
+        CadastroFilme janela = CadastroFilme.getInstance();
+        janela.setSize(473, 330);
+        janela.limparCampos();
+        janela.atualizarGeneros();
+        anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosFilmeActionPerformed
 
     private void mnuCadastrosSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosSessaoActionPerformed
         // TODO add your handling code here:
-        CadastroSessao.getInstancia().setVisible(true);
+        CadastroSessao janela = CadastroSessao.getInstancia();
+        janela.setSize(439, 378);
+        janela.limparCampos();
+        janela.atualizarComboBox();
+        anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosSessaoActionPerformed
 
     private void mnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaActionPerformed
@@ -270,33 +284,34 @@ public class Principal extends javax.swing.JFrame {
 
     private void mnuVendaNovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaNovaActionPerformed
         // TODO add your handling code here:
-        CadastroVenda.getInstancia(funcionario).setVisible(true);
+        CadastroVenda janela = CadastroVenda.getInstancia(funcionario);
+        janela.setSize(485, 487);
+        janela.limparCampos();
+        janela.atualizarComboBox();
+        anexarJanela(janela);
     }//GEN-LAST:event_mnuVendaNovaActionPerformed
 
     private void mnuRelatoriosSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosSalasActionPerformed
         // TODO add your handling code here:
-        try(InputStream in = getClass().getResourceAsStream("/RelatorioSalas.jasper")){
-        
-         JasperPrint jasperPrint = JasperFillManager.fillReport(in, null, ConexaoBd.getConexao());
-         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-         
+        try ( InputStream in = getClass().getResourceAsStream("/RelatorioSalas.jasper")) {
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(in, null, ConexaoBd.getConexao());
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+
 //         jasperViewer.setTitle("Relatório de Salas");
 //         jasperViewer.setVisible(true);
-        
-         
-         JDialog dialog = new JDialog(this);
-         dialog.setContentPane(jasperViewer.getContentPane());
-         dialog.setSize(jasperViewer.getSize());
-         dialog.setTitle("Relatório de Salas");
-         dialog.setModal(true);
-         dialog.setVisible(true);
-        
-        
+            JDialog dialog = new JDialog(this);
+            dialog.setContentPane(jasperViewer.getContentPane());
+            dialog.setSize(jasperViewer.getSize());
+            dialog.setTitle("Relatório de Salas");
+            dialog.setModal(true);
+            dialog.setVisible(true);
+
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JRException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }//GEN-LAST:event_mnuRelatoriosSalasActionPerformed
 
 

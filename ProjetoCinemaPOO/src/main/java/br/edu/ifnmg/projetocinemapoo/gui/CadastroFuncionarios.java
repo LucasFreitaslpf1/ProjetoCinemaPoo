@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas
  */
-public class CadastroFuncionarios extends javax.swing.JFrame {
+public class CadastroFuncionarios extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CadastroFuncionarios
@@ -50,9 +50,9 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Cadastro de funcionário");
-        setResizable(false);
 
         lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSenha.setText("Nome:");
@@ -157,9 +157,6 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rdbCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCaixaActionPerformed
@@ -199,7 +196,7 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    public void limparCampos() {
+    protected void limparCampos() {
         txtNome.setText("");
         txtSenha.setText("");
         bgpGerenteCaixa.clearSelection();

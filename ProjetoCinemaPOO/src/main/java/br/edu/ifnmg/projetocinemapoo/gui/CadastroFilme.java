@@ -64,9 +64,9 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
         btnSalvar = new javax.swing.JButton();
         txtDuracao = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Cadastro Filme");
-        setResizable(false);
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNome.setText("Nome:");
