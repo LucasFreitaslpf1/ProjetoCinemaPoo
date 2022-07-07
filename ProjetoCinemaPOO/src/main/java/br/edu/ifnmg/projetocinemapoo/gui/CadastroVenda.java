@@ -303,6 +303,8 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
     private List<Ingresso> ingressos = new ArrayList<>();
     private void btnAdicionarIngressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarIngressoActionPerformed

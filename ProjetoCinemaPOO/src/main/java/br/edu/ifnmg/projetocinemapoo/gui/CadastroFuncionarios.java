@@ -157,6 +157,8 @@ public class CadastroFuncionarios extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void rdbCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCaixaActionPerformed
