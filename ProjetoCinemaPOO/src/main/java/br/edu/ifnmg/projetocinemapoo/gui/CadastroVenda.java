@@ -409,7 +409,6 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
 
     private void cmbSessaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbSessaoFocusGained
         // TODO add your handling code here:
-        atualizarComboBox();
     }//GEN-LAST:event_cmbSessaoFocusGained
 
     private void controleIngressos() {
@@ -456,6 +455,17 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
         txtPreco.setText(null);
         txtPrecoTotal.setText(null);
         txtSala.setText(null);
+    }
+
+    private Boolean validarCampos() {
+
+        Guiche g = (Guiche) cmbGuiche.getSelectedItem();
+
+        if (g == null) {
+            JOptionPane.showMessageDialog(null, "Escolha um guiche");
+        }
+
+        return true;
     }
 
 

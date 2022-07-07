@@ -22,11 +22,11 @@ public class CadastroSala extends javax.swing.JInternalFrame {
         initComponents();
         rdb2D.setSelected(true);
     }
-    
+
     private static CadastroSala cadastroSala;
-    
-    public static CadastroSala getInstancia(){
-        if(cadastroSala == null){
+
+    public static CadastroSala getInstancia() {
+        if (cadastroSala == null) {
             cadastroSala = new CadastroSala();
         }
         return cadastroSala;
@@ -160,19 +160,25 @@ public class CadastroSala extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Sala sala = new Sala();
-        sala.setNumero(Integer.parseInt(txtNumero.getText()));
-        sala.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
 
-        if(rdb2D.isSelected()){
+        try {
+            sala.setNumero(Integer.parseInt(txtNumero.getText()));
+            sala.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Número e/ou capacidade inválidos");
+            return;
+        }
+
+        if (rdb2D.isSelected()) {
             sala.setTela(Tela._2D);
-        } else{
+        } else {
             sala.setTela(Tela._3D);
         }
 
         Sala s = new SalaDao().localizarPorNumero(sala.getNumero());
-        if(s != null){
+        if (s != null) {
             JOptionPane.showMessageDialog(null, "Sala já cadastrada");
-        } else{
+        } else {
 
             Long id = new SalaDao().salvar(sala);
             sala.setId(id);
@@ -183,16 +189,16 @@ public class CadastroSala extends javax.swing.JInternalFrame {
     private void rdb3DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdb3DActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdb3DActionPerformed
-    
-       protected void limparCampos() {
-     
-       txtNumero.setText(null);
-       txtCapacidade.setText(null);
-       rdb2D.setSelected(true);
-       
-       txtNumero.requestFocus();
-     
-     }
+
+    protected void limparCampos() {
+
+        txtNumero.setText(null);
+        txtCapacidade.setText(null);
+        rdb2D.setSelected(true);
+
+        txtNumero.requestFocus();
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgTela;

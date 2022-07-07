@@ -6,6 +6,7 @@ package br.edu.ifnmg.projetocinemapoo.gui;
 
 import br.edu.ifnmg.projetocinemapoo.dao.GeneroDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Genero;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,21 +15,22 @@ import br.edu.ifnmg.projetocinemapoo.entity.Genero;
 public class CadastroGenero extends javax.swing.JInternalFrame {
 
     private static CadastroGenero instance;
-    
+
     public CadastroGenero() {
         initComponents();
     }
-    
-    public static CadastroGenero getInstance(){
-        if(instance == null){
+
+    public static CadastroGenero getInstance() {
+        if (instance == null) {
             instance = new CadastroGenero();
         }
         return instance;
     }
-    
+
     protected void limparCampos() {
         txtNome.setText(null);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -103,6 +105,11 @@ public class CadastroGenero extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if (txtNome.getText() == null || txtNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Nome inválido");
+            return;
+        }
+
         Genero gen = new Genero();
 
         gen.setNome(txtNome.getText());

@@ -20,6 +20,7 @@ public class CadastroFuncionarios extends javax.swing.JInternalFrame {
      */
     private CadastroFuncionarios() {
         initComponents();
+        rdbCaixa.setSelected(true);
     }
 
     public static CadastroFuncionarios cadastroFuncionarios;
@@ -179,6 +180,9 @@ public class CadastroFuncionarios extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        if(!validarCampos()){
+            return;
+        }
         Funcionario f = new Funcionario();
         f.setNome(txtNome.getText());
         f.setSenha(txtSenha.getText());
@@ -202,8 +206,25 @@ public class CadastroFuncionarios extends javax.swing.JInternalFrame {
         txtNome.setText("");
         txtSenha.setText("");
         bgpGerenteCaixa.clearSelection();
+        rdbCaixa.setSelected(true);
     }
 
+    private Boolean validarCampos() {
+
+        String s = txtNome.getText();
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Nome inválido");
+            return false;
+        }
+
+        s = txtSenha.getText();
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Senha inválida");
+            return false;
+        }
+
+        return true;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

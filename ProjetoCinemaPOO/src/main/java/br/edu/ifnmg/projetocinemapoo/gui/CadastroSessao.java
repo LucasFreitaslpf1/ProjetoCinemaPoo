@@ -20,6 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,14 +33,14 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
      */
     private CadastroSessao() {
         initComponents();
-        
+
         rdbDublado.setSelected(true);
     }
-    
+
     private static CadastroSessao cadastroSessao;
-    
-    public static CadastroSessao getInstancia(){
-        if(cadastroSessao == null){
+
+    public static CadastroSessao getInstancia() {
+        if (cadastroSessao == null) {
             cadastroSessao = new CadastroSessao();
         }
         return cadastroSessao;
@@ -210,6 +211,9 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        if(!validarCampos()){
+            return;
+        }
         Sessao s = new Sessao();
         s.setFilme((Filme) cmbFilme.getSelectedItem());
         s.setHorario(converterParaLocalDateTime(dtcHorario.getDate(), dtcHorario, hmcHorario.getTime()));
@@ -241,7 +245,6 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
 
     private void cmbSalaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbSalaFocusGained
         // TODO add your handling code here:
-        atualizarComboBox();
     }//GEN-LAST:event_cmbSalaFocusGained
 
     private LocalDateTime converterParaLocalDateTime(Date data, JDateChooser calendario, String tempo) {
@@ -277,6 +280,36 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
         cmbSala.setModel(ComboBoxModelS);
     }
 
+    private Boolean validarCampos() {
+
+        Filme f = (Filme) cmbFilme.getSelectedItem();
+        if (f == null) {
+            JOptionPane.showMessageDialog(null, "Escolha um filme.");
+            return false;
+        }
+
+        Date d = dtcHorario.getDate();
+        if (d == null) {
+            JOptionPane.showMessageDialog(null, "Data inválida.");
+            return false;
+        }
+
+        Sala s = (Sala) cmbSala.getSelectedItem();
+        if (s == null) {
+            JOptionPane.showMessageDialog(null, "Escolha uma sala.");
+            return false;
+        }
+        
+        Double n;
+        try {
+            n = Double.parseDouble(txtPreco.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Preço inválido");
+            return false;
+        }
+
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;

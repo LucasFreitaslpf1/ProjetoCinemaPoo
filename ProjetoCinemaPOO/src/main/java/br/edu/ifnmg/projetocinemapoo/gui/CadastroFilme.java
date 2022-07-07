@@ -12,6 +12,7 @@ import br.edu.ifnmg.projetocinemapoo.enums.Classificacao;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -175,6 +176,10 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if(!validarCampos()){
+            return;
+        }
+        
         Filme filme = new Filme();
 
         filme.setNome(txtNome.getText());
@@ -201,7 +206,34 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
         cboGenero.setModel(comboBoxModel);
         comboBoxModel.addAll(todosGeneros);
     }
+    
+    private Boolean validarCampos() {
 
+        String s = txtNome.getText();
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Nome inválido");
+            return false;
+        }
+
+        s = txtDuracao.getText();
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Duração inválida");
+            return false;
+        }
+
+        s = (String) cboClassificacao.getSelectedItem();
+        if (s == null || s.equals("")) {
+            JOptionPane.showMessageDialog(null, "Escolha uma classificação");
+            return false;
+        }
+        
+        Genero g = (Genero) cboGenero.getSelectedItem();
+        if(g == null){
+            JOptionPane.showMessageDialog(null, "Escolha um gênero");
+            return false;
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;

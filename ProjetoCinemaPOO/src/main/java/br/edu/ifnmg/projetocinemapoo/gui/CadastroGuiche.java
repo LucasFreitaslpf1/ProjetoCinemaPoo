@@ -121,8 +121,16 @@ public class CadastroGuiche extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+       
         Guiche g = new Guiche();
-        g.setNumero(Integer.parseInt(txtNumero.getText()));
+        
+        try {
+            g.setNumero(Integer.parseInt(txtNumero.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Número inválido");
+            return;
+        }
+        
         Guiche g2 = new GuicheDao().localizarPorNumero(g.getNumero());
         if (g2 != null) {
             JOptionPane.showMessageDialog(null, "Guiche já cadastrado");
