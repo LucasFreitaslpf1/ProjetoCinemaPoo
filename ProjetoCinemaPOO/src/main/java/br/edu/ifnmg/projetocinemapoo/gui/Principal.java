@@ -7,11 +7,13 @@ package br.edu.ifnmg.projetocinemapoo.gui;
 import br.edu.ifnmg.projetocinemapoo.dao.ConexaoBd;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
 import br.edu.ifnmg.projetocinemapoo.enums.TipoFuncionario;
+import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
+import javax.swing.JInternalFrame;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -47,7 +49,26 @@ public class Principal extends javax.swing.JFrame {
         }
         return principal;
     }
+     
+    
+      private void anexarJanela(JInternalFrame janela) {
+        if (!janela.isVisible()) {
 
+            dskPrincipal.add(janela);
+
+        }
+
+        janela.setVisible(true);
+
+         try {
+            janela.setIcon(false);
+            janela.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        janela.toFront();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,7 +80,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jPanel1 = new javax.swing.JPanel();
+        dskPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivo = new javax.swing.JMenu();
         mnuArquivoSair = new javax.swing.JMenuItem();
@@ -82,17 +103,16 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Principal");
-        setResizable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout dskPrincipalLayout = new javax.swing.GroupLayout(dskPrincipal);
+        dskPrincipal.setLayout(dskPrincipalLayout);
+        dskPrincipalLayout.setHorizontalGroup(
+            dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+        dskPrincipalLayout.setVerticalGroup(
+            dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 442, Short.MAX_VALUE)
         );
 
         mnuArquivo.setText("Arquivo");
@@ -197,11 +217,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dskPrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dskPrincipal)
         );
 
         pack();
@@ -210,7 +230,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void mnuCadastrosSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosSalaActionPerformed
         // TODO add your handling code here:
-        CadastroSala.getInstancia().setVisible(true);
+        CadastroSala janela = CadastroSala.getInstancia();
+        anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosSalaActionPerformed
 
     private void mnuCadastrosFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosFuncionarioActionPerformed
@@ -230,7 +251,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuCadastrosGuicheActionPerformed
 
     private void mnuCadastrosGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosGeneroActionPerformed
-        CadastroGenero.getInstance().setVisible(true);
+        CadastroGenero janela = CadastroGenero.getInstance();
+        anexarJanela(janela);
     }//GEN-LAST:event_mnuCadastrosGeneroActionPerformed
 
     private void mnuCadastrosFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrosFilmeActionPerformed
@@ -279,10 +301,10 @@ public class Principal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dskPrincipal;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu mnuArquivo;
     private javax.swing.JMenuItem mnuArquivoSair;
     private javax.swing.JMenu mnuCadastros;
