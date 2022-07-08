@@ -197,7 +197,9 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
 
     private void cboGeneroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboGeneroFocusGained
         // TODO add your handling code here:
+        Integer i = cboGenero.getSelectedIndex();
         atualizarGeneros();
+        cboGenero.setSelectedIndex(i);
     }//GEN-LAST:event_cboGeneroFocusGained
 
     protected void atualizarGeneros() {
@@ -217,6 +219,12 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
 
         s = txtDuracao.getText();
         if (s == null || s.equals("")) {
+            try {
+                Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Duração inválida");
+                return false;
+            }
             JOptionPane.showMessageDialog(null, "Duração inválida");
             return false;
         }

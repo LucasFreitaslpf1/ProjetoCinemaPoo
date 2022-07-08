@@ -155,6 +155,9 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="dtcHorario">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dtcHorarioFocusLost"/>
+          </Events>
         </Component>
         <Component class="com.toedter.calendar.JHourMinuteChooser" name="hmcHorario">
           <Properties>

@@ -92,6 +92,12 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Horario:");
 
+        dtcHorario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dtcHorarioFocusLost(evt);
+            }
+        });
+
         hmcHorario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         cmbSala.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -240,12 +246,19 @@ public class CadastroSessao extends javax.swing.JInternalFrame {
 
     private void cmbFilmeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbFilmeFocusGained
         // TODO add your handling code here:
+        Integer i;
+        i = cmbFilme.getSelectedIndex();
         atualizarComboBox();
+        cmbFilme.setSelectedIndex(i);
     }//GEN-LAST:event_cmbFilmeFocusGained
 
     private void cmbSalaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbSalaFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbSalaFocusGained
+
+    private void dtcHorarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dtcHorarioFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dtcHorarioFocusLost
 
     private LocalDateTime converterParaLocalDateTime(Date data, JDateChooser calendario, String tempo) {
         if (data == null) {

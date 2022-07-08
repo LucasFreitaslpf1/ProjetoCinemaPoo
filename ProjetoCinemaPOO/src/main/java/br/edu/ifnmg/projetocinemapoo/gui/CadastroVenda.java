@@ -350,7 +350,10 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
         // ASSOCIA FUNCIONARIO QUE FEZ A VENDA AO GUICHE E
         // INCREMENTA O NUMERO DE INGRESSOS VENDIDOS DA SESSAO
         s = (Sessao) cmbSessao.getSelectedItem();
-        s.vendeuIngressos(ingressos.size());
+        if (!s.vendeuIngressos(ingressos.size())) {
+            JOptionPane.showMessageDialog(null, "Sessão lotada");
+            return;
+        }
         new SessaoDao().salvar(s);
 
         v.setQuantidade((short) ingressos.size());
@@ -421,8 +424,12 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
 
     private void cmbGuicheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbGuicheFocusGained
         // TODO add your handling code here:
+        Integer i,i1;
+        i = cmbGuiche.getSelectedIndex();
+        i1 = cmbSessao.getSelectedIndex();
         atualizarComboBox();
-        limparCampos();
+        cmbGuiche.setSelectedIndex(i);
+        cmbSessao.setSelectedIndex(i1);
     }//GEN-LAST:event_cmbGuicheFocusGained
 
     private void cmbSessaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbSessaoFocusGained

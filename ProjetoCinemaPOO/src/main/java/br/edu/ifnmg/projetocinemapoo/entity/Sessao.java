@@ -76,8 +76,12 @@ public class Sessao extends Entidade {
     }
 
 //</editor-fold>
-    public void vendeuIngressos(Integer qtd) {
+    public Boolean vendeuIngressos(Integer qtd) {
+        if((ingressosVendidos + qtd) > sala.getCapacidade()){
+            return false;
+        }
         ingressosVendidos += qtd;
+        return true;
     }
 
     @Override
