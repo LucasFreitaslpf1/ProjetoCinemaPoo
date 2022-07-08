@@ -6,6 +6,8 @@ package br.edu.ifnmg.projetocinemapoo;
 
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,7 +18,7 @@ import java.util.logging.Logger;
 public class ProjetoCinemaPOO {
 
     public static void main(String[] args) {
-    //TESTE GERAL
+            //TESTE GERAL
 //        Funcionario funcionario1 = new Funcionario();
 //        funcionario1.setNome("Ana Paula");
 //        funcionario1.setSenha("123");

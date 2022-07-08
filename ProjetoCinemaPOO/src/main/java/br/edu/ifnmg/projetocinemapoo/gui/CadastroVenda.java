@@ -396,7 +396,7 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
                     .getClassificacao().getDescription().replace("_", "+"));
             txtDuracao.setText(s.getFilme().getDuracao() + " minutos");
             txtHorario.setText(s.getHorario().
-                    format(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm")));
+                    format(DateTimeFormatter.ofPattern("dd/MM/yyy HH:mm")));
             txtPreco.setText(s.getValorSessao().toString());
             txtSala.setText(s.getSala().getTela().getDescription().replace("_", ""));
         }

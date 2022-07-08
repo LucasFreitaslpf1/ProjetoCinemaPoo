@@ -109,7 +109,7 @@ public class Principal extends javax.swing.JFrame {
         dskPrincipal.setLayout(dskPrincipalLayout);
         dskPrincipalLayout.setHorizontalGroup(
             dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 841, Short.MAX_VALUE)
         );
         dskPrincipalLayout.setVerticalGroup(
             dskPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
