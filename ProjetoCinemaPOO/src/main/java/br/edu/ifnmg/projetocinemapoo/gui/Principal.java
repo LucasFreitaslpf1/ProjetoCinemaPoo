@@ -97,6 +97,7 @@ public class Principal extends javax.swing.JFrame {
         mnuRelatoriosSalas = new javax.swing.JMenuItem();
         mnuRelatoriosGuiches = new javax.swing.JMenuItem();
         mnuRelatoriosFilmes = new javax.swing.JMenuItem();
+        mnuVendas = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -231,6 +232,14 @@ public class Principal extends javax.swing.JFrame {
         });
         mnuRelatorios.add(mnuRelatoriosFilmes);
 
+        mnuVendas.setText("Vendas");
+        mnuVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVendasActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(mnuVendas);
+
         jMenuBar1.add(mnuRelatorios);
 
         setJMenuBar(jMenuBar1);
@@ -313,22 +322,26 @@ public class Principal extends javax.swing.JFrame {
         anexarJanela(janela);
     }//GEN-LAST:event_mnuVendaNovaActionPerformed
 
+    private void mnuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendasActionPerformed
+        chamarRelatorio("/RelatorioVendas.jasper","Relatório de Vendas");
+    }//GEN-LAST:event_mnuVendasActionPerformed
+
+    private void mnuRelatoriosFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosFilmesActionPerformed
+        chamarRelatorio("/RelatorioFilmes.jasper","Relatório de Filmes");
+    }//GEN-LAST:event_mnuRelatoriosFilmesActionPerformed
+
+    private void mnuRelatoriosGuichesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosGuichesActionPerformed
+        chamarRelatorio("/RelatorioGuiches.jasper","Relatório de Guichês");
+    }//GEN-LAST:event_mnuRelatoriosGuichesActionPerformed
+
     private void mnuRelatoriosSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosSalasActionPerformed
         // TODO add your handling code here:
         chamarRelatorio("/RelatorioSalas.jasper","Relatório de Salas");
     }//GEN-LAST:event_mnuRelatoriosSalasActionPerformed
 
     private void mnuRelatoriosFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosFuncionariosActionPerformed
-       chamarRelatorio("/RelatorioFuncionarios.jasper","Relatório de Funcionários");
+        chamarRelatorio("/RelatorioFuncionarios.jasper","Relatório de Funcionários");
     }//GEN-LAST:event_mnuRelatoriosFuncionariosActionPerformed
-
-    private void mnuRelatoriosGuichesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosGuichesActionPerformed
-        chamarRelatorio("/RelatorioGuiches.jasper","Relatório de Guichês");
-    }//GEN-LAST:event_mnuRelatoriosGuichesActionPerformed
-
-    private void mnuRelatoriosFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosFilmesActionPerformed
-        chamarRelatorio("/RelatorioFilmes.jasper","Relatório de Filmes");
-    }//GEN-LAST:event_mnuRelatoriosFilmesActionPerformed
 
     private void chamarRelatorio(String arquivo, String titulo){
             try ( InputStream in = getClass().getResourceAsStream(arquivo)) {
@@ -373,5 +386,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuRelatoriosSalas;
     private javax.swing.JMenu mnuVenda;
     private javax.swing.JMenuItem mnuVendaNova;
+    private javax.swing.JMenuItem mnuVendas;
     // End of variables declaration//GEN-END:variables
 }
