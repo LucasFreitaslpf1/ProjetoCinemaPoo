@@ -98,6 +98,7 @@ public class Principal extends javax.swing.JFrame {
         mnuRelatoriosGuiches = new javax.swing.JMenuItem();
         mnuRelatoriosFilmes = new javax.swing.JMenuItem();
         mnuVendas = new javax.swing.JMenuItem();
+        mnuRelatoriosSessoes = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -240,6 +241,14 @@ public class Principal extends javax.swing.JFrame {
         });
         mnuRelatorios.add(mnuVendas);
 
+        mnuRelatoriosSessoes.setText("Sessões");
+        mnuRelatoriosSessoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRelatoriosSessoesActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(mnuRelatoriosSessoes);
+
         jMenuBar1.add(mnuRelatorios);
 
         setJMenuBar(jMenuBar1);
@@ -343,6 +352,11 @@ public class Principal extends javax.swing.JFrame {
         chamarRelatorio("/RelatorioFuncionarios.jasper","Relatório de Funcionários");
     }//GEN-LAST:event_mnuRelatoriosFuncionariosActionPerformed
 
+    private void mnuRelatoriosSessoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosSessoesActionPerformed
+        // TODO add your handling code here:
+        chamarRelatorio("/RelatorioSessoes.jasper", "Relatório de Sessões");
+    }//GEN-LAST:event_mnuRelatoriosSessoesActionPerformed
+
     private void chamarRelatorio(String arquivo, String titulo){
             try ( InputStream in = getClass().getResourceAsStream(arquivo)) {
 
@@ -384,6 +398,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
     private javax.swing.JMenuItem mnuRelatoriosGuiches;
     private javax.swing.JMenuItem mnuRelatoriosSalas;
+    private javax.swing.JMenuItem mnuRelatoriosSessoes;
     private javax.swing.JMenu mnuVenda;
     private javax.swing.JMenuItem mnuVendaNova;
     private javax.swing.JMenuItem mnuVendas;

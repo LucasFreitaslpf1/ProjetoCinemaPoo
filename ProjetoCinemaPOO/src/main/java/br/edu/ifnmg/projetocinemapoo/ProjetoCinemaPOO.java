@@ -4,31 +4,9 @@
  */
 package br.edu.ifnmg.projetocinemapoo;
 
-import br.edu.ifnmg.projetocinemapoo.dao.FilmeDao;
-import br.edu.ifnmg.projetocinemapoo.dao.FuncionarioDao;
-import br.edu.ifnmg.projetocinemapoo.dao.GeneroDao;
-import br.edu.ifnmg.projetocinemapoo.dao.GuicheDao;
-import br.edu.ifnmg.projetocinemapoo.dao.IngressoDao;
-import br.edu.ifnmg.projetocinemapoo.dao.SalaDao;
-import br.edu.ifnmg.projetocinemapoo.dao.SessaoDao;
-import br.edu.ifnmg.projetocinemapoo.dao.VendaDao;
 
-import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
-import br.edu.ifnmg.projetocinemapoo.entity.Sala;
-import br.edu.ifnmg.projetocinemapoo.entity.Genero;
-import br.edu.ifnmg.projetocinemapoo.entity.Filme;
-import br.edu.ifnmg.projetocinemapoo.entity.Guiche;
-import br.edu.ifnmg.projetocinemapoo.entity.Sessao;
-import br.edu.ifnmg.projetocinemapoo.entity.Ingresso;
-import br.edu.ifnmg.projetocinemapoo.entity.Venda;
-
-import br.edu.ifnmg.projetocinemapoo.enums.Tela;
-import br.edu.ifnmg.projetocinemapoo.enums.TipoFuncionario;
-import br.edu.ifnmg.projetocinemapoo.enums.Audio;
-import br.edu.ifnmg.projetocinemapoo.enums.Classificacao;
-
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 /**
  *
@@ -37,7 +15,6 @@ import java.util.Arrays;
 public class ProjetoCinemaPOO {
 
     public static void main(String[] args) {
-
         //TESTE GERAL
 //        Funcionario funcionario1 = new Funcionario();
 //        funcionario1.setNome("Ana Paula");
