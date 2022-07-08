@@ -65,9 +65,9 @@ public class SessaoDao extends Dao<Sessao, Long> {
     public List extrairObjetos(ResultSet rs) {
         ArrayList<Sessao> sessoes = new ArrayList<>();
         try {
-            while (rs.next()) {
+            do {
                 sessoes.add(extrairObjeto(rs));
-            }
+            } while (rs.next());
         } catch (SQLException ex) {
             Logger.getLogger(SessaoDao.class.getName()).log(Level.SEVERE, null, ex);
         }

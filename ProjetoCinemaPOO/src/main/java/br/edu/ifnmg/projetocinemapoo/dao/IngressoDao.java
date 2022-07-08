@@ -21,11 +21,11 @@ public class IngressoDao extends Dao<Ingresso, Long> {
     public String obterSentencaUpdate() {
         return "update ingresso set meiaentrada = ?,preco = ?, venda_id = ? where id = ?;";
     }
-    
-     private String getDeclaracaoSelectIngressosPorVenda() {
+
+    private String getDeclaracaoSelectIngressosPorVenda() {
         return "SELECT * FROM ingresso WHERE venda_id = ?";
     }
-    
+
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Ingresso e) {
         try {
@@ -76,10 +76,10 @@ public class IngressoDao extends Dao<Ingresso, Long> {
 
         try {
 
-            while (rs.next()) {
+            do {
 
                 ingressos.add(extrairObjeto(rs));
-            }
+            } while (rs.next());
 
         } catch (SQLException ex) {
             Logger.getLogger(IngressoDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,7 +87,7 @@ public class IngressoDao extends Dao<Ingresso, Long> {
 
         return ingressos;
     }
-    
+
     public List<Ingresso> localizarIngressosPorVenda(Venda venda) {
 
         // Declara referência para reter o(s) objeto(s) a ser(em) recuperado(s)
@@ -114,5 +114,5 @@ public class IngressoDao extends Dao<Ingresso, Long> {
 
         return ingressos;
     }
-    
+
 }

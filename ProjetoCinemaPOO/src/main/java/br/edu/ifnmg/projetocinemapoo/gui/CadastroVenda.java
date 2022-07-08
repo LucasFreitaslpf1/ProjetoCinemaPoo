@@ -5,6 +5,7 @@
 package br.edu.ifnmg.projetocinemapoo.gui;
 
 import br.edu.ifnmg.projetocinemapoo.dao.GuicheDao;
+import br.edu.ifnmg.projetocinemapoo.dao.IngressoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.SessaoDao;
 import br.edu.ifnmg.projetocinemapoo.dao.VendaDao;
 import br.edu.ifnmg.projetocinemapoo.entity.Funcionario;
@@ -360,9 +361,16 @@ public class CadastroVenda extends javax.swing.JInternalFrame {
         Double total = 0.0;
         for (Ingresso ingresso : ingressos) {
             total += ingresso.getPreco();
+
         }
         v.setValorTotal(total);
-        new VendaDao().salvar(v);
+        Long vendaId = new VendaDao().salvar(v);
+        for (Ingresso ingresso : ingressos) {
+            ingresso.setVendaId(vendaId);
+            IngressoDao ingressoDao = new IngressoDao();
+            ingressoDao.salvar(ingresso);
+
+        }
         limparCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
