@@ -6,7 +6,6 @@ package br.edu.ifnmg.projetocinemapoo;
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,10 +16,7 @@ import java.util.logging.Logger;
 public class ProjetoCinemaPOO {
 
     public static void main(String[] args) {
-        String s = "2022-07-08 15:19:00";
-        try {
-            System.out.println(new SimpleDateFormat("dd/MM/yyy 'ás' HH:mm:ss").format(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(s)));
-            //TESTE GERAL
+    //TESTE GERAL
 //        Funcionario funcionario1 = new Funcionario();
 //        funcionario1.setNome("Ana Paula");
 //        funcionario1.setSenha("123");
@@ -245,9 +241,5 @@ public class ProjetoCinemaPOO {
 //        System.out.println("\n>>>>VENDAS: " + new VendaDao().localizarTodos() + "\n");
 //
 //        System.out.println("\n>>>>INGRESSOS: " + new IngressoDao().localizarTodos() + "\n");
-        } catch (ParseException ex) {
-            Logger.getLogger(ProjetoCinemaPOO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 }
