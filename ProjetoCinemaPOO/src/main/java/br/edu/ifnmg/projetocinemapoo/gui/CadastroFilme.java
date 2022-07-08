@@ -176,10 +176,10 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(!validarCampos()){
+        if (!validarCampos()) {
             return;
         }
-        
+
         Filme filme = new Filme();
 
         filme.setNome(txtNome.getText());
@@ -208,7 +208,7 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
         cboGenero.setModel(comboBoxModel);
         comboBoxModel.addAll(todosGeneros);
     }
-    
+
     private Boolean validarCampos() {
 
         String s = txtNome.getText();
@@ -218,25 +218,31 @@ public class CadastroFilme extends javax.swing.JInternalFrame {
         }
 
         s = txtDuracao.getText();
-        if (s == null || s.equals("")) {
-            try {
-                Integer.parseInt(s);
-            } catch (NumberFormatException e) {
+        try {
+            Integer.parseInt(s);
+            if (s == null || s.equals("")) {
                 JOptionPane.showMessageDialog(null, "Duração inválida");
                 return false;
             }
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Duração inválida");
             return false;
         }
 
         s = (String) cboClassificacao.getSelectedItem();
         if (s == null || s.equals("")) {
+            try {
+                Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Escolha uma classificação");
+                return false;
+            }
             JOptionPane.showMessageDialog(null, "Escolha uma classificação");
             return false;
         }
-        
+
         Genero g = (Genero) cboGenero.getSelectedItem();
-        if(g == null){
+        if (g == null) {
             JOptionPane.showMessageDialog(null, "Escolha um gênero");
             return false;
         }
