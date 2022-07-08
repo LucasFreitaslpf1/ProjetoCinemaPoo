@@ -34,9 +34,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         funcionario = f;
         if (funcionario.getTipoFuncionario() != TipoFuncionario.GERENTE) {
-            mnuRelatorios.setEnabled(false);
-            mnuCadastrosFuncionario.setEnabled(false);
-            mnuCadastrosGuiche.setEnabled(false);
+            mnuCadastros.setEnabled(false);
         }
     }
 
